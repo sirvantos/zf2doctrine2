@@ -6,7 +6,7 @@
 		Doctrine\Common\Collections\ArrayCollection;
 	
 	/** 
-	 * @ORM\Entity 
+	 * @ORM\Entity(repositoryClass="Application\Model\Repository\Album") 
 	 * @ORM\Table(
 	 *		name="album", 
 	 *		indexes = {

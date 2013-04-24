@@ -3,7 +3,7 @@
 	use Doctrine\ORM\Mapping as ORM;
 	
 	/** 
-	 * @ORM\Entity 
+	 * @ORM\Entity(repositoryClass="Application\Model\Repository\Artist") 
 	 * @ORM\Table(
 	 *	name="artist", 
 	 *	indexes = {
