@@ -14,21 +14,21 @@ use Zend\View\Model\ViewModel;
 
 class AuthController extends AbstractActionController
 {
-    public function indexAction()
-    {
-        return new ViewModel();
-    }
+	public function indexAction()
+	{
+		return new ViewModel();
+	}
 
-    public function authAction()
-    {
-    	return new ViewModel();
-    }
-    
-   public function loginAction()
-   {
-   }
+	public function authAction()
+	{
+		return new ViewModel();
+	}
 
-   public function logoutAction()
-   {
-   }
+	public function loginAction()
+	{
+	}
+
+	public function logoutAction()
+	{
+	}
 }

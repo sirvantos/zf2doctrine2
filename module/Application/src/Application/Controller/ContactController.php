@@ -14,13 +14,13 @@ use Zend\View\Model\ViewModel;
 
 class ContactController extends AbstractActionController
 {
-    public function indexAction()
-    {
-        return new ViewModel();
-    }
+	public function indexAction()
+	{
+		return new ViewModel();
+	}
 
-    public function sendAction()
-    {
-    	return new ViewModel();
-    }
+	public function sendAction()
+	{
+		return new ViewModel();
+	}
 }
