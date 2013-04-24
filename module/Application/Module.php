@@ -10,7 +10,6 @@
 namespace Application;
 
 use 
-	Application\Model\Cache\Predis\Client,
 	Zend\Mvc\ModuleRouteListener,
 	Zend\Mvc\MvcEvent;
 
