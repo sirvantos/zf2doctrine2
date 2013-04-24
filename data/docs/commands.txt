@@ -1,0 +1,3 @@
+[migration]
+
+./vendor/bin/doctrine-module migrations:execute 20130424144029 --up --configuration=vendor/doctrine/doctrine-orm-module/.travis/migrations-config.xml
