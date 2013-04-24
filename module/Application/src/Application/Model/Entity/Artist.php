@@ -8,7 +8,8 @@
 	 *	name="artist", 
 	 *	indexes = {
 	 *		@ORM\Index(name="artist_name_idx", columns={"name"}), 
-	 *		@ORM\Index(name="artist_birthday_idx", columns={"birthday"})})
+	 *		@ORM\Index(name="artist_birthday_idx", columns={"birthday"})}
+	 *)
 	 */
 	class Artist {
 		/**
