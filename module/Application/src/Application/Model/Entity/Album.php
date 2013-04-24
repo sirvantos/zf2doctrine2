@@ -1,10 +1,19 @@
 <?php
 	namespace Application\Model\Entity;
-	use Doctrine\ORM\Mapping as ORM;
+	
+	use 
+		Doctrine\ORM\Mapping as ORM, 
+		Doctrine\Common\Collections\ArrayCollection;
 	
 	/** 
 	 * @ORM\Entity 
-	 * @ORM\Table(name="album", indexes = {@ORM\Index(name="album_title_idx", columns={"title"}), @ORM\Index(name="album_length_idx", columns={"length"})})
+	 * @ORM\Table(
+	 *		name="album", 
+	 *		indexes = {
+	 *			@ORM\Index(name="album_title_idx", columns={"title"}), 
+	 *			@ORM\Index(name="album_length_idx", columns={"length"})
+	 *		}
+	 *)
 	 */
 	class Album {
 		/**
@@ -19,6 +28,21 @@
 		
 		/** @ORM\Column(columnDefinition="smallint unsigned", nullable=false) */
 		protected $length;
+		
+		/** 
+		 * @ORM\ManyToMany(targetEntity="Artist") 
+		 * @ORM\JoinTable(
+		 *		name="album_artist",
+		 *		joinColumns={@ORM\JoinColumn(name="album_id", referencedColumnName="id")},
+		 *		inverseJoinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id")}
+		 * )
+		 */
+		protected $artists;
+		
+		public function __construct() 
+		{
+			$this->artists = new ArrayCollection();
+		}
 		
 		public function getId() 
 		{
@@ -61,5 +85,24 @@
 			$this->title = $title;
 			
 			return $this;
+		}
+		
+		/**
+		 * @param \Doctrine\Common\Collections\ArrayCollection $artists
+		 * @return \Application\Model\Entity\Album
+		 */
+		public function setArtists(ArrayCollection $artists)
+		{
+			$this->artists = $artists;
+			
+			return $this;
+		}
+		
+		/**
+		 * @return Doctrine\Common\Collections\ArrayCollection
+		 */
+		public function getArtists()
+		{
+			return $this->artists;
 		}
 	}
