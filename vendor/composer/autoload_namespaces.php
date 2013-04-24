@@ -11,6 +11,7 @@ return array(
     'ZendDeveloperTools' => $vendorDir . '/zendframework/zend-developer-tools/src',
     'Symfony\\Component\\Console\\' => $vendorDir . '/symfony/console',
     'Doctrine\\ORM' => $vendorDir . '/doctrine/orm/lib',
+    'Doctrine\\DBAL\\Migrations' => $vendorDir . '/doctrine/migrations/lib',
     'Doctrine\\DBAL' => $vendorDir . '/doctrine/dbal/lib',
     'Doctrine\\Common' => $vendorDir . '/doctrine/common/lib',
     'DoctrineORMModule\\' => $vendorDir . '/doctrine/doctrine-orm-module/src',

@@ -7,5 +7,5 @@
     <name>doctrine-migrations configuration for travis tests</name>
     <migrations-namespace>TravisDoctrineMigrations</migrations-namespace>
     <table name="doctrine_migration_versions"/>
-    <migrations-directory>data</migrations-directory>
+    <migrations-directory>./database/migrations</migrations-directory>
 </doctrine-migrations>
