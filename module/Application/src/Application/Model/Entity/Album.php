@@ -4,9 +4,8 @@
 	
 	/** 
 	 * @ORM\Entity 
-	 * @ORM\Table(name="album")
+	 * @ORM\Table(name="album", indexes = {@ORM\Index(name="album_title_idx", columns={"title"}), @ORM\Index(name="album_length_idx", columns={"length"})})
 	 */
-	
 	class Album {
 		/**
 		* @ORM\Id
@@ -15,12 +14,12 @@
 		*/
 		protected $id;
 
-		/** @ORM\Column(type="string", length=32) */
-		protected $artist;
-		
-		/** @ORM\Column(type="string", length=32) */
+		/** @ORM\Column(type="string", length=32, nullable=false) */
 		protected $title;
-
+		
+		/** @ORM\Column(columnDefinition="smallint unsigned", nullable=false) */
+		protected $length;
+		
 		public function getId() 
 		{
 			return $this->id;
@@ -29,18 +28,18 @@
 		/**
 		 * @return String
 		 */
-		public function getArtist() 
+		public function getLength() 
 		{
-			return $this->artist;
+			return $this->length;
 		}
 
 		/**
 		 * @param type $artist
 		 * @return \Application\Entity\User
 		 */
-		public function setArtist($artist) 
+		public function setLength($length) 
 		{
-			$this->artist = $artist;
+			$this->length = $length;
 			
 			return $this;
 		}
