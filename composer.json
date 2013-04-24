@@ -7,6 +7,7 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework"			: "2.*",
+        "zendframework/zend-developer-tools"	: "*",
         "doctrine/migrations"					: "dev-master",
         "doctrine/doctrine-orm-module"			: "*"
     }
