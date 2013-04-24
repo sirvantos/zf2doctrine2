@@ -13,10 +13,4 @@
 	use Zend\Db\ResultSet\ResultSet;
 	use Zend\Db\TableGateway\TableGateway;	
 
-	return array(
-		'service_manager' => array(
-			'factories' => array(
-				'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
-			),
-		)
-	);
+	return array('service_manager' => array());
