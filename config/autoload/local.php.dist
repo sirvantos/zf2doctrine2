@@ -15,6 +15,22 @@ return array(
     'view_manager' => array(
 		'display_not_found_reason' => true,
 		'display_exceptions'       => true,
+	),
+	'service_manager' => array(
+		'factories' => array(
+			'SystemLog' => function ($sm) 
+			{
+				$em = $sm->get('Application')->getEventManager();
+				
+				$sysLog = new \Application\Model\Error\Service\MailLog();
+				
+				$em->attach(
+					\Zend\Mvc\MvcEvent::EVENT_ROUTE,  array($sysLog, 'initLog')
+				);
+				
+				return $sysLog;
+			}
+		),
 	)
 		
 	// Whether or not to enable a configuration cache.
