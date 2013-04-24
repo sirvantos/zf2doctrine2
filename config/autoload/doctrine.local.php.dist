@@ -1,0 +1,17 @@
+<?php
+	return array(
+		'doctrine' => array(
+			'connection' => array(
+				'orm_default' => array(
+					'driverClass' =>'Doctrine\DBAL\Driver\Mysqli\Driver',
+					'params' => array(
+						'host'     => 'localhost',
+						'port'     => '3306',
+						'user'     => 'zf2test',
+						'password' => 'zf2test',
+						'dbname'   => 'zf2test'
+					)
+				)
+			)
+		)
+	);
