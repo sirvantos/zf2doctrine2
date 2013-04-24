@@ -13,4 +13,8 @@
 	use Zend\Db\ResultSet\ResultSet;
 	use Zend\Db\TableGateway\TableGateway;	
 
-	return array('service_manager' => array());
+	return array(
+		'service_manager' => array(
+			'aliases' => array('em' => 'Doctrine\ORM\EntityManager')
+		)
+	);
