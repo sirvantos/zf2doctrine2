@@ -43,15 +43,4 @@ class Module
             ),
         );
     }
-	
-	public function getServiceConfig()
-    {
-		return array(
-		   'factories' => array(
-			   'predis' => function($sm) {
-				  return new Client($sm->get('Config')['predis']);
-			   },
-		   ),
-		);
-	}
 }
