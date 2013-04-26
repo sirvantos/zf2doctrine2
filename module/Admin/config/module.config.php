@@ -35,7 +35,9 @@ return array(
         'factories' => array(
             'navigation'	=> 'Zend\Navigation\Service\DefaultNavigationFactory',
             'authService'	=> function ($sm) {
-				return $sm->get('doctrine.authenticationservice.orm_default');
+				$af = new DoctrineModule\Service\Authentication\AuthenticationServiceFactory('orm_default');
+				
+				return $af->createService($sm);
 			}
         ),
     ),
