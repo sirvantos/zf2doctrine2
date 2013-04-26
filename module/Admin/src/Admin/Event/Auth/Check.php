@@ -51,7 +51,21 @@ final class Check
 		
 		$role = Acl::ROLE_GUEST;
 		
-		if ($userAuth->hasIdentity()) $role = $userAuth->getIdentity()->role;
+		if ($userAuth->hasIdentity()) {
+			
+			$em = $event->getApplication()->getServiceManager()->get('em');
+			
+			$userObj = 
+				$em->
+					getRepository('Application\Model\Entity\SystemUser')->
+					findOneById($userAuth->getIdentity());
+			
+			if (!$userObj) {
+				//@TODO: add warning message to log
+			} else {
+				$role = $userObj->getRole();
+			}
+		}
 		
 		$this->initNavigation($role);
 		

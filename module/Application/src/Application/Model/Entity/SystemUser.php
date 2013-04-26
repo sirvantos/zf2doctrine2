@@ -7,6 +7,7 @@
 	
 	/** 
 	 * @ORM\Entity(repositoryClass="Application\Model\Repository\SystemUser") 
+	 * @ORM\HasLifecycleCallbacks  
 	 * @ORM\Table(
 	 *		name="system_user", 
 	 *		indexes = {
@@ -43,6 +44,12 @@
 		public static function hashPassword($entity, $credentialValue)
 		{
 			return crypt($credentialValue, $entity->getPassword());
+		}
+		
+		/** @ORM\PrePersist */
+		public function setCreatedTime()
+		{
+			$this->created = new \DateTime(date('Y-m-d H:i:s'));
 		}
 		
 		public function getId() 
