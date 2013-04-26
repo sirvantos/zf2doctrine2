@@ -1,33 +1,32 @@
 <?php
 	namespace Application\Model\Error\Service;
-	
-	use 
-		Zend\EventManager\Event,
+
+	use Zend\EventManager\Event,
 		Zend\Log\Logger, 
-		Zend\Mail\Message;
-	
-	final class MailLog extends SystemLog
+		Application\Model\Error\Logger\Convert2Exception;
+
+	class PolicyProcessingErrors
 	{
 		/**
-		 * @param \Zend\EventManager\Event $e
-		 * @return \Application\Model\Error\Service\MailLog
+		 * @var \Zend\Log\Logger
 		 */
-		public function initLog(Event $e)
+		private $logger = null;
+
+
+		public function __construct(Logger $logger)
 		{
-			parent::initLog($e);
+			$this->logger = $logger;
+		}
+		
+		/**
+		 * @param \Zend\EventManager\Event $e
+		 * @return \Application\Model\Error\Service\PolicyProcessingErrors
+		 */
+		public function init(Event $e)
+		{
+			Logger::registerErrorHandler(new Convert2Exception());
 			
-			$message = new Message();
-			
-			$message->setTo('sirvantosbuglovers@gmail.com');
-			
-			$logger = new Logger(array('writers' => array(
-				array(
-					'name' => '\Zend\Log\Writer\Mail', 
-					'options' => array(
-						'mail' => $message
-					)
-				)
-			)));
+			$logger = $this->logger;
 			
 			$e->getApplication()->getEventManager()->attach(
 				\Zend\Mvc\Application::ERROR_EXCEPTION, function (Event $e) use ($logger) {

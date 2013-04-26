@@ -25,7 +25,7 @@ class Module
 		$moduleRouteListener = new ModuleRouteListener();
 		$moduleRouteListener->attach($eventManager);
 		
-		$e->getApplication()->getServiceManager()->get('SystemLog');
+		$e->getApplication()->getServiceManager()->get('PolicyProcessingErrors');
     }
 	
 	public function getConfig()

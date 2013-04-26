@@ -11,35 +11,42 @@
  * credentials from accidentally being committed into version control.
  */
 
-return array(
-    'view_manager' => array(
-		'display_not_found_reason' => true,
-		'display_exceptions'       => true,
-	),
-	'service_manager' => array(
-		'factories' => array(
-			'SystemLog' => function ($sm) 
-			{
-				$em = $sm->get('Application')->getEventManager();
-				
-				$sysLog = new \Application\Model\Error\Service\MailLog();
-				
-				$em->attach(
-					\Zend\Mvc\MvcEvent::EVENT_ROUTE,  array($sysLog, 'initLog')
-				);
-				
-				return $sysLog;
-			}
+	use 
+		Zend\Log\Logger,
+		Application\Model\Error\Service\PolicyProcessingErrors;
+
+	return array(
+		'view_manager' => array(
+			'display_not_found_reason' => false,
+			'display_exceptions'       => false,
 		),
-	)
-		
-	// Whether or not to enable a configuration cache.
-    // If enabled, the merged configuration will be cached and used in
-    // subsequent requests.
-    //'config_cache_enabled' => false,
-    // The key used to create the configuration cache file name.
-    //'config_cache_key' => 'module_config_cache',
-    // The path in which to cache merged configuration.
-    //'cache_dir' =>  './data/cache',
-    // ...
-);
+		'service_manager' => array(
+			'factories' => array(
+				'logger' =>  function ($sm) {
+					
+					$message = new Message();
+
+					/**
+					 * @todo move this settings to config file
+					 */
+					$message->setTo('sirvantosbuglovers@gmail.com');
+					
+					return new Logger(array('writers' => array(
+						array(
+							'name'		=> '\Zend\Log\Writer\Stream',
+							'options'	=> array(
+								'log_separator' => "\n\n\n",
+								'stream'		=> "/var/log/www/zf2doctrine.log",
+							)
+						),
+						array(
+							'name' => '\Zend\Log\Writer\Mail', 
+							'options' => array(
+								'mail' => $message
+							)
+						)
+					)));
+				}
+			),
+		)
+	);

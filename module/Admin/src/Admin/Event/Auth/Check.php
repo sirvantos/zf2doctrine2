@@ -63,7 +63,7 @@ final class Check
 			if (!$userObj) {
 				//@TODO: add warning message to log
 			} else {
-				$role = $userObj->getRole();
+				//$role = $userObj->getRole();
 			}
 		}
 		
