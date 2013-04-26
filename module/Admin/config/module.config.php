@@ -82,55 +82,9 @@ return array(
                             'defaults' => array(
                             ),
                         ),
-                    ),
-					'news-edit' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/news/edit/:id',
-                            'constraints' => array(
-                                'id'     => '[0-9]+'
-                            ),
-                            'defaults' => array(
-								'controller'    => 'News',
-								'action'        => 'edit'
-							),
-                        ),
-                    ),
-					'news-delete' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/news/delete/:id',
-                            'constraints' => array(
-                                'id'     => '[0-9]+'
-                            ),
-                            'defaults' => array(
-								'controller'    => 'News',
-								'action'        => 'delete'
-							),
-                        ),
-                    ),
-                ),
+                    )
+                )
             ),
 		)
-	),
-	'navigation' => array(
-        // The DefaultNavigationFactory we configured in (1) uses 'default' as the sitemap key
-        'default' => array(
-            // And finally, here is where we define our page hierarchy
-           'news' => array(
-                'label'			=> 'News',
-                'controller'	=> 'news',
-                'action'		=> 'index',
-				'resource'		=> 'admin',
-				'privilege'		=> 'news',
-            ),
-			'login' => array(
-                'label'			=> 'Login',
-                'controller'	=> 'auth',
-                'action'		=> 'login',
-				'resource'		=> 'admin',
-				'privilege'		=> 'auth',
-            ),
-        ),
-    ),
+	)
 );
