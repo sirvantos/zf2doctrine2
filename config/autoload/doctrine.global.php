@@ -14,10 +14,10 @@
 				)
 			),
 			'authentication' => array(
-				'doctrineAdapter'		=> array(
+				'orm_default'	=> array(
 					'objectManager'			=> 'Doctrine\ORM\EntityManager',
 					'identityClass'			=> 'Application\Model\Entity\SystemUser',
-					'identityProperty'		=> 'username',
+					'identityProperty'		=> 'email',
 					'credentialProperty'	=> 'password',
 					'credentialCallable'	=> 'Application\Model\Entity\SystemUser::hashPassword'
 				)

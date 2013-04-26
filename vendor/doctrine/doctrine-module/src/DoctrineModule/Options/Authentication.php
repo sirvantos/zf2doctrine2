@@ -176,7 +176,8 @@ class Authentication extends AbstractOptions
     public function setIdentityClass($identityClass)
     {
         $this->identityClass = $identityClass;
-        return $this;
+        
+		return $this;
     }
 
     /**

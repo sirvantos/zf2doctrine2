@@ -42,8 +42,7 @@
 		
 		public static function hashPassword($entity, $credentialValue)
 		{
-			var_dump($entity);
-			var_dump($credentialValue);exit;
+			return crypt($credentialValue, $entity->getPassword());
 		}
 		
 		public function getId() 

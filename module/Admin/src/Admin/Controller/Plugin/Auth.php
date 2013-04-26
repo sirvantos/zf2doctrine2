@@ -38,17 +38,15 @@
 				
 				$sl->
 					get('authService')->
-						setAdapter(
-							$doctrineAdapterFactory->
-								createService($sl)->
-									setIdentityValue(
-										$loginForm->get('email')->getValue()
-									)->
-									setCredentialValue(
-										$loginForm->get('password')->getValue()
-									)
-						)->
-						authenticate();
+						getAdapter()->
+							setIdentityValue(
+								$loginForm->get('email')->getValue()
+							)->
+							setCredentialValue(
+								$loginForm->get('password')->getValue()
+							);
+				
+				$result = $sl->get('authService')->authenticate()->isValid();
 				
 			} elseif (!$request->isPost())  {
 				$result = null;
