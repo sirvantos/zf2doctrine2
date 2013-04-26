@@ -9,6 +9,7 @@
 	 * @uses Zend\View\Model\ViewModel
 	 */
 	use 
+		DoctrineModule\Service\Authentication\AdapterFactory,
 		Zend\Mvc\Controller\Plugin\AbstractPlugin, 
 		Admin\Form\Login as LoginForm;;
 	
@@ -31,18 +32,24 @@
 				$request->isPost()
 				&& $loginForm->setData($request->getPost())->isValid()
 			) {
-				$res = 
-					$c->
-						getServiceLocator()->
-							get('systemUserTable')->
-								authenticate(
-									$loginForm->get('email')->getValue(), 
-									$loginForm->get('password')->getValue()
-								);
+				$sl = $c->getServiceLocator();
 				
-				if ($res->isValid()) {
-					$result = true;
-				}
+				$doctrineAdapterFactory = new AdapterFactory('doctrineAdapter');
+				
+				$sl->
+					get('authService')->
+						setAdapter(
+							$doctrineAdapterFactory->
+								createService($sl)->
+									setIdentityValue(
+										$loginForm->get('email')->getValue()
+									)->
+									setCredentialValue(
+										$loginForm->get('password')->getValue()
+									)
+						)->
+						authenticate();
+				
 			} elseif (!$request->isPost())  {
 				$result = null;
 			}
@@ -52,19 +59,6 @@
 		
 		public function logout()
 		{
-			$c = $this->getController();
-			
-			if ($c->identity()) {
-				$as = $c->getServiceLocator()->get('authService');
-				
-				if (!$as) 
-					throw new \RuntimeException(
-						'Knows nothing about authService'
-					);
-				
-				$as->clearIdentity();
-			}
-			
 			return $this;
 		}
 	}

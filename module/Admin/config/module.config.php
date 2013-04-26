@@ -34,8 +34,8 @@ return array(
 	'service_manager' => array(
         'factories' => array(
             'navigation'	=> 'Zend\Navigation\Service\DefaultNavigationFactory',
-            'authService'	=> function () {
-				return new Zend\Authentication\AuthenticationService();
+            'authService'	=> function ($sm) {
+				return $sm->get('doctrine.authenticationservice.orm_default');
 			}
         ),
     ),

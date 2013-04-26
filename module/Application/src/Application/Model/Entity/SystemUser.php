@@ -40,6 +40,12 @@
 		/** @ORM\Column(type="datetime", nullable=false) */
 		protected $created;
 		
+		public static function hashPassword($entity, $credentialValue)
+		{
+			var_dump($entity);
+			var_dump($credentialValue);exit;
+		}
+		
 		public function getId() 
 		{
 			return $this->id;
