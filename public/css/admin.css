@@ -1,0 +1,176 @@
+@charset "utf-8";
+
+img {
+	border: 0px;
+}
+
+body { 
+	font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif;
+	background-color: #fff;
+	color: #001A35;
+	margin-top:0px;
+}
+
+fieldset {
+	border: 1px solid #001A35;
+}
+
+input, select {
+	width:100%; 
+	border: 1px solid #001A35; 
+	background-color: #4FC0E6; 
+	height: 35px;
+	font: 18px Arial, Verdana, sans-serif;
+	color: #FFF;
+}
+
+textarea { 
+	border: 1px solid #001A35; 
+	background-color: #EEEEEE; 
+}
+
+form.filterForm input, select {
+	width: auto;
+	height: auto;
+	font: 18px Arial, Verdana, sans-serif;
+}
+
+.key { width: 140px; font-weight: bold; }
+.subkey { width: 140px;	font-weight: plain;	}
+.error { color: #DD0000; padding-left: 10px; }
+.hand {
+	cursor: pointer;
+}
+
+#body {width: auto;}
+#billede { width: 400px; }
+#topmenu { background-color: #424242; position: absolute; top: 0px; left: 0px; width: 100%; height: 18px; padding: 5px; }
+#topmenu A { background-color: #000000; color: #FFFFFF; border: 1px solid #bababa; padding: 3px; }
+#topmenu ul {list-style: none;}
+#topmenu li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	color: #339;
+	font-weight: bold;
+}
+
+div#container {
+	margin: 0px auto;
+    width: 100%;
+    background-color: #fff;
+}
+
+div#header {
+	margin: 0px auto;
+    width: 100%;
+    background-color: #fff;
+}
+
+div#footer {
+	margin: 0px auto;
+    width: 100%;
+    background-color: #fff;
+}
+
+.textCenter {
+	text-align: center;
+}
+
+.center {
+	margin: 0px auto;
+    width: auto;
+    background-color: #fff;
+}
+
+div#leftColumn {
+	width: 300px;
+}
+
+div#rightColumn {
+	width: 900px;
+}
+
+div.messageBlock {
+	text-align	: center; 
+	display		: block;
+}
+
+div.messageRed h3 {
+	color		: #DD0000;
+}
+
+div.messageGreen  h3 {
+	color		: #090;
+}
+
+div.messageBlock {
+	text-align	: center; 
+	display		:none;
+}
+
+.right {
+	float : right;
+}
+
+.left {
+	float : left;
+}
+
+.clear {
+	clear: both;
+}
+
+table.list {
+	border: none;
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+}
+
+table.list th {
+	text-transform: uppercase;
+}
+
+table.list tr {
+	height: 35px;
+}
+
+table.list tr.hover {
+	background-color: #FC0 !important;
+}
+
+table.list tr.active {
+	background-color: #9CF !important;
+}
+
+table.list tr:nth-child(2n-1) {
+	background: #CEEFFF;
+} 
+
+table.list tr:nth-child(1) {
+	background: #4FC0E6;
+	color: #fff;
+}
+
+
+/* CSS Document */
+a:link {
+	color: #4067A2;
+	text-decoration: underline;
+	font-weight: bold;
+}
+a:visited {
+	text-decoration: underline;
+	color: #4067A2;
+	font-weight: bold;
+}
+a:hover {
+	text-decoration: underline;
+	color: #CCC;
+}
+a:active {
+	text-decoration: underline;
+	color: #4067A2;
+	font-weight: bold;
+}

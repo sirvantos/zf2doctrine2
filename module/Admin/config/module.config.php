@@ -8,41 +8,10 @@
  */
 
 return array(
-	'di' => array(
-		'instance' => array(
-			'alias' => array(
-				'user' => 'User\Controller\UserController'
-			),
-			'user' => array(
-				'parameters' => array(
-					'broker' => 'Zend\Mvc\Controller\PluginBroker'
-				)
-			),
-			'Admin\Acl\Acl' => array(
-				'parameters' => array(
-					'config' => include __DIR__ . '/acl.config.php'
-				)
-			),
-			'Admin\Event\Auth\Check' => array(
-				'parameters' => array(
-					'userAuthenticationPlugin' => 'Admin\Acl\Authentication',
-					'aclClass'                 => 'Admin\Acl\Acl'
-				)
-			)
-		),
-	),
-	'service_manager' => array(
-        'factories' => array(
-            'navigation'	=> 'Zend\Navigation\Service\DefaultNavigationFactory',
-            'authService'	=> function () {
-				return new Zend\Authentication\AuthenticationService();
-			}
-        ),
-    ),
 	'controllers' => array(
         'invokables' => array(
-            'Admin\Controller\News'	=> 'Admin\Controller\NewsController',
-            'Admin\Controller\Auth'	=> 'Admin\Controller\AuthController'
+            'Admin\Controller\News'		=> 'Admin\Controller\NewsController',
+            'Admin\Controller\Auth'		=> 'Admin\Controller\AuthController'
         ),
     ),
 	'controller_plugins' => array(
