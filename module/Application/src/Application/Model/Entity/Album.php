@@ -30,11 +30,11 @@
 		protected $length;
 		
 		/** 
-		 * @ORM\ManyToMany(targetEntity="Artist") 
+		 * @ORM\ManyToMany(targetEntity="Artist", cascade={"persist"}) 
 		 * @ORM\JoinTable(
 		 *		name="album_artist",
-		 *		joinColumns={@ORM\JoinColumn(name="album_id", referencedColumnName="id")},
-		 *		inverseJoinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id")}
+		 *		joinColumns={@ORM\JoinColumn(name="album_id", referencedColumnName="id", onDelete="CASCADE")},
+		 *		inverseJoinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", onDelete="CASCADE")}
 		 * )
 		 */
 		protected $artists;

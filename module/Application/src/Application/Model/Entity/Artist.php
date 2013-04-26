@@ -54,7 +54,7 @@
 		 */
 		public function getBirthday() 
 		{
-			return new \DateTime($this->birthday);
+			return $this->birthday;
 		}
 
 		/**
@@ -63,7 +63,7 @@
 		 */
 		public function setBirthday(\DateTime $birthday) 
 		{
-			$this->birthday = $birthday->format('Y-m-d H:i:s');
+			$this->birthday = $birthday;
 			
 			return $this;
 		}
