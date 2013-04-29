@@ -25,7 +25,6 @@ return array(
 			),
 			'Admin\Event\Auth\Check' => array(
 				'parameters' => array(
-					'userAuthenticationPlugin' => 'Admin\Acl\Authentication',
 					'aclClass'                 => 'Admin\Acl\Acl'
 				)
 			)
