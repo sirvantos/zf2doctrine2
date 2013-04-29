@@ -57,9 +57,10 @@ class ConfigurationFactory extends DoctrineConfigurationFactory
         foreach ($options->getFilters() as $name => $class) {
             $config->addFilter($name, $class);
         }
-
+		
         $config->setMetadataCacheImpl($serviceLocator->get($options->getMetadataCache()));
-        $config->setQueryCacheImpl($serviceLocator->get($options->getQueryCache()));
+        
+		$config->setQueryCacheImpl($serviceLocator->get($options->getQueryCache()));
         $config->setResultCacheImpl($serviceLocator->get($options->getResultCache()));
         $config->setMetadataDriverImpl($serviceLocator->get($options->getDriver()));
 

@@ -24,9 +24,10 @@
 					$em = $sm->get('Application')->getEventManager();
 
 					$ppe = new PolicyProcessingErrors($sm->get('logger'));
-
+					
 					$em->attach(
-						\Zend\Mvc\MvcEvent::EVENT_ROUTE,  array($ppe, 'init'), 0
+						\Zend\Mvc\MvcEvent::EVENT_ROUTE,  array($ppe, 'init'), 
+						100000000000
 					);
 
 					return $ppe;

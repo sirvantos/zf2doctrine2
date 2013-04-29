@@ -137,7 +137,7 @@ class Application implements
               ->setRequest($this->getRequest())
               ->setResponse($this->getResponse())
               ->setRouter($serviceManager->get('Router'));
-
+	  
         // Trigger bootstrap events
         $events->trigger(MvcEvent::EVENT_BOOTSTRAP, $event);
         return $this;
