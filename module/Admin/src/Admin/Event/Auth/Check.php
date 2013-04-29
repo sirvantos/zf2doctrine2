@@ -45,26 +45,16 @@ final class Check
 	 */
 	public function preDispatch(MvcEvent $event)
 	{
-		$userAuth = $this->getUserAuthenticationPlugin();
+		$sm = $event->getApplication()->getServiceManager();
+		
+		$userAuth = $sm->get('authService');
 		
 		$acl = $this->getAcl();
 		
 		$role = Acl::ROLE_GUEST;
 		
 		if ($userAuth->hasIdentity()) {
-			
-			$em = $event->getApplication()->getServiceManager()->get('em');
-			
-			$userObj = 
-				$em->
-					getRepository('Application\Model\Entity\SystemUser')->
-					findOneById($userAuth->getIdentity());
-			
-			if (!$userObj) {
-				//@TODO: add warning message to log
-			} else {
-				//$role = $userObj->getRole();
-			}
+			$role = $userAuth->getIdentityObj()->getRole();
 		}
 		
 		$this->initNavigation($role);
@@ -99,21 +89,6 @@ final class Check
 			$response->send();
 			exit;
 		}
-	}
-
-	/**
-	 * Gets Authentication Plugin
-	 *
-	 * @return \User\Controller\Plugin\UserAuthentication
-	 */
-	public function getUserAuthenticationPlugin()
-	{
-		if ($this->_userAuth === null) {
-			$this->_userAuth = new Authentication();
-			$this->_userAuth->setAuthService(new AuthenticationService());
-		}
-
-		return $this->_userAuth;
 	}
 
 	/**
