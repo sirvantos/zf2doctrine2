@@ -5,7 +5,7 @@
 				'application_entities' => array(
 					'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
 					'cache' => 'array',
-					'paths' => array(__DIR__ . '/../src/Application/Model/Entity')
+					'paths' => array(__DIR__ . '/../../module/Application/src/')
 				),
 				'orm_default' => array(
 					'drivers' => array(
