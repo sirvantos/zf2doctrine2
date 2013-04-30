@@ -39,8 +39,8 @@
 		/** @ORM\Column(name="last_name",type="string", length=128, nullable=true) */
 		protected $lastName;
 		
-		/** @ORM\Column(name="role",type="string", length=16, nullable=false, default="guest") */
-		protected $role;
+		/** @ORM\Column(name="role",type="string", length=16, nullable=false) */
+		protected $role = 'guest';
 		
 		/** @ORM\Column(type="datetime", nullable=false) */
 		protected $created;

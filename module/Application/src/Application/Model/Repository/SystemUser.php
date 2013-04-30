@@ -30,6 +30,6 @@
 				true, Cache::DEFAULT_LIFE_TIME, 'systemuser_' . $id
 			);
 			
-			return $query->getResult();
+			return $query->getSingleResult();
 		}
 	}
