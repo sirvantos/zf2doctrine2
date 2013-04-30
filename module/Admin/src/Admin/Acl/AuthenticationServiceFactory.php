@@ -2,15 +2,16 @@
 	namespace Admin\Acl;
 	
 	use 
-		DoctrineModule\Service\AbstractFactory, 
-		Zend\ServiceManager\ServiceLocatorInterface;
+		DoctrineModule\Service\AbstractFactory,
+		Zend\ServiceManager\ServiceLocatorInterface,
+		Zend\Authentication\AuthenticationService;
 	
 	/**
 	 * Auth factory
 	 *
 	 * @author sirvantos
 	 */
-	final class AuthenticationFactory extends AbstractFactory
+	final class AuthenticationServiceFactory extends AbstractFactory
 	{
 		/**
 		*
@@ -19,16 +20,10 @@
 		*/
 	   public function createService(ServiceLocatorInterface $serviceLocator)
 	   {
-		   $as =  new AuthenticationService(
-			   $serviceLocator->get('doctrine.authenticationstorage.' . $this->getName()),
+		   return new AuthenticationService(
+			   $serviceLocator->get('authenticationStorage'),
 			   $serviceLocator->get('doctrine.authenticationadapter.' . $this->getName())
 		   );
-		   
-		   $as->
-				setLogger($serviceLocator->get('logger'))->
-				setEntityManager($serviceLocator->get('em'));
-		   
-		   return $as;
 	   }
 
 	   public function getOptionsClass()

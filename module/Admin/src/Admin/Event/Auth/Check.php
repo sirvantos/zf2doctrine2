@@ -54,7 +54,7 @@ final class Check
 		$role = Acl::ROLE_GUEST;
 		
 		if ($userAuth->hasIdentity()) {
-			$role = $userAuth->getIdentityObj()->getRole();
+			$role = $userAuth->getIdentity()->getRole();
 		}
 		
 		$this->initNavigation($role);

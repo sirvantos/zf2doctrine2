@@ -32,9 +32,10 @@ return array(
 	),
 	'service_manager' => array(
         'factories' => array(
-            'navigation'	=> 'Zend\Navigation\Service\DefaultNavigationFactory',
-            'authService'	=> function ($sm) {
-				$af = new Admin\Acl\AuthenticationFactory('orm_default');
+            'navigation'			=> 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'authenticationStorage' => new Admin\Acl\AuthenticationStorageFactory('orm_default'),
+			'authService'			=> function ($sm) {
+				$af = new Admin\Acl\AuthenticationServiceFactory('orm_default');
 				
 				return $af->createService($sm);
 			}

@@ -3,6 +3,7 @@
 	
 	use 
 		Doctrine\ORM\Mapping as ORM, 
+		Application\Utility\Time as TimeUtil, 
 		Doctrine\Common\Collections\ArrayCollection;
 	
 	/** 
@@ -49,7 +50,7 @@
 		/** @ORM\PrePersist */
 		public function setCreatedTime()
 		{
-			$this->created = new \DateTime(date('Y-m-d H:i:s'));
+			$this->created = TimeUtil::makeCurrentDate();
 		}
 		
 		public function getId() 
