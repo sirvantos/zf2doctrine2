@@ -31,14 +31,14 @@ return array(
 		),
 	),
 	'service_manager' => array(
-        'factories' => array(
-            'navigation'			=> 'Zend\Navigation\Service\DefaultNavigationFactory',
-            'authenticationStorage' => new Admin\Acl\AuthenticationStorageFactory('orm_default'),
-			'authService'			=> function ($sm) {
-				$af = new Admin\Acl\AuthenticationServiceFactory('orm_default');
-				
-				return $af->createService($sm);
-			}
+        'aliases' => array(
+			'authService' => 'doctrine.authenticationservice.orm_default',
+		),
+		'factories' => array(
+            'navigation'									=> 
+				'Zend\Navigation\Service\DefaultNavigationFactory',
+            'doctrine.authenticationstorage.orm_default'	=> 
+				new Admin\Acl\AuthenticationStorageFactory('orm_default')
         ),
     ),
 	'controllers' => array(
