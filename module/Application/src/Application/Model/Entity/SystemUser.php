@@ -2,8 +2,9 @@
 	namespace Application\Model\Entity;
 	
 	use 
+		Application\Utility\Time as TimeUtil,
+		Admin\Acl\Acl,
 		Doctrine\ORM\Mapping as ORM, 
-		Application\Utility\Time as TimeUtil, 
 		Doctrine\Common\Collections\ArrayCollection;
 	
 	/** 
@@ -40,7 +41,7 @@
 		protected $lastName;
 		
 		/** @ORM\Column(name="role",type="string", length=16, nullable=false) */
-		protected $role = 'guest';
+		protected $role = Acl::ROLE_GUEST;
 		
 		/** @ORM\Column(type="datetime", nullable=false) */
 		protected $created;
