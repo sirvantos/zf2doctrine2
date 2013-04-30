@@ -39,6 +39,9 @@
 		/** @ORM\Column(name="last_name",type="string", length=128, nullable=true) */
 		protected $lastName;
 		
+		/** @ORM\Column(name="role",type="string", length=16, nullable=false, default="guest") */
+		protected $role;
+		
 		/** @ORM\Column(type="datetime", nullable=false) */
 		protected $created;
 		
@@ -152,7 +155,26 @@
 			
 			return $this;
 		}
+		
+		/**
+		 * @param String $role
+		 * @return \Application\Model\Entity\SystemUser
+		 */
+		public function setRole($role)
+		{
+			$this->role = $role;
+			
+			return $this;
+		}
 
+		/**
+		 * @return String
+		 */
+		public function getRole()
+		{
+			return $this->role;
+		}
+		
 		/**
 		 * @return \DateTime
 		 */
