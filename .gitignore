@@ -17,6 +17,7 @@ app/[Cc]onfig/database.php
 
 # cache
 data/cache/*
+vendor/*
 
 INSTALL.txt
 LICENSE.txt
