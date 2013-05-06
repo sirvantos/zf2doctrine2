@@ -11,6 +11,9 @@
 					'application' => array(
 						'all' => 'guest'
 					),
+					'dkcwdzf2munee' => array(
+						'all' => 'guest'
+					),
 					'admin' => array(
 						'auth' => 'guest',
 						'all'   => 'admin'

@@ -9,6 +9,9 @@ return array(
     'Zend\\' => $vendorDir . '/zendframework/zendframework/library',
     'ZendTest\\' => $vendorDir . '/zendframework/zendframework/tests',
     'Symfony\\Component\\Console\\' => $vendorDir . '/symfony/console',
+    'Munee' => $vendorDir . '/meenie/munee/src',
+    'JShrink' => $vendorDir . '/tedivm/jshrink/src',
+    'Imagine' => $vendorDir . '/imagine/imagine/lib',
     'Doctrine\\ORM' => $vendorDir . '/doctrine/orm/lib',
     'Doctrine\\DBAL\\Migrations' => $vendorDir . '/doctrine/migrations/lib',
     'Doctrine\\DBAL' => $vendorDir . '/doctrine/dbal/lib',
@@ -17,4 +20,7 @@ return array(
     'DoctrineORMModuleTest\\' => $vendorDir . '/doctrine/doctrine-orm-module/tests',
     'DoctrineModule\\' => $vendorDir . '/doctrine/doctrine-module/src',
     'DoctrineModuleTest\\' => $vendorDir . '/doctrine/doctrine-module/tests',
+    'DkcwdZf2Munee\\' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/src',
+    'DkcwdZf2MuneeTest\\' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/test',
+    'CoffeeScript' => $vendorDir . '/coffeescript/coffeescript/src',
 );

@@ -6,4 +6,22 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'DkcwdZf2MuneeTest\\Bootstrap' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/test/Bootstrap.php',
+    'DkcwdZf2MuneeTest\\ViewHelpersTest' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/test/DkcwdZf2MuneeTest/ViewHelpersTest.php',
+    'DkcwdZf2Munee\\Controllers\\MuneeController' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/src/DkcwdZf2Munee/Controllers/MuneeController.php',
+    'DkcwdZf2Munee\\Module' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/Module.php',
+    'DkcwdZf2Munee\\View\\Helpers\\MuneeCss' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/src/DkcwdZf2Munee/View/Helpers/MuneeCss.php',
+    'DkcwdZf2Munee\\View\\Helpers\\MuneeImg' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/src/DkcwdZf2Munee/View/Helpers/MuneeImg.php',
+    'DkcwdZf2Munee\\View\\Helpers\\MuneeJs' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/src/DkcwdZf2Munee/View/Helpers/MuneeJs.php',
+    'lessc' => $vendorDir . '/leafo/lessphp/lessc.inc.php',
+    'lessc_formatter_classic' => $vendorDir . '/leafo/lessphp/lessc.inc.php',
+    'lessc_formatter_compressed' => $vendorDir . '/leafo/lessphp/lessc.inc.php',
+    'lessc_formatter_lessjs' => $vendorDir . '/leafo/lessphp/lessc.inc.php',
+    'lessc_parser' => $vendorDir . '/leafo/lessphp/lessc.inc.php',
+    'scss_formatter' => $vendorDir . '/leafo/scssphp/scss.inc.php',
+    'scss_formatter_compressed' => $vendorDir . '/leafo/scssphp/scss.inc.php',
+    'scss_formatter_nested' => $vendorDir . '/leafo/scssphp/scss.inc.php',
+    'scss_parser' => $vendorDir . '/leafo/scssphp/scss.inc.php',
+    'scss_server' => $vendorDir . '/leafo/scssphp/scss.inc.php',
+    'scssc' => $vendorDir . '/leafo/scssphp/scss.inc.php',
 );

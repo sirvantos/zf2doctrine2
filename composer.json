@@ -8,6 +8,7 @@
         "php": ">=5.3.3",
         "zendframework/zendframework"			: "2.*",
         "doctrine/migrations"					: "dev-master",
-        "doctrine/doctrine-orm-module"			: "*"
+        "doctrine/doctrine-orm-module"			: "*",
+        "dkcwd/dkcwd-zf2-munee"					: "1.2.*"
     }
 }

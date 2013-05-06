@@ -6,6 +6,7 @@ return array(
         'Admin',
         'DoctrineModule',
         'DoctrineORMModule',
+        'DkcwdZf2Munee',
         'Application'
     ),
 	'view_manager' => array(
