@@ -20,13 +20,9 @@
 		?>
 		
 		<?php 
-			echo $this->muneeJs(
-				array(
-					$this->basePath() . '/js/html5.js',
-					$this->basePath() . '/js/bootstrap.min.js',
-					$this->basePath() . '/js/jquery.min.js'
-				)
-			);
+			echo $this->headScript()->prependFile($this->muneeJs(
+				array($this->basePath() . '/js/libs/jquery/min.js'), true, false
+			));
 		?>
     </head>
     <body>
