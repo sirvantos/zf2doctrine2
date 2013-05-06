@@ -1,7 +1,5 @@
 <?php 
-	$this->headScript()->prependFile($this->muneeJs(
-		array($this->basePath() . '/js/libs/jquery/plugins/mustache.js'), true, false
-	));
+	$this->muneeHeadScript()->prependFile($this->basePath() . '/js/libs/jquery/plugins/mustache.js');
 ?>
 
 <div class="hero-unit">

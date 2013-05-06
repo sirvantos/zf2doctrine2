@@ -7,6 +7,10 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
+use
+	Application\View\Helper\MuneeHeadScript,
+	Application\View\Helper\MuneeHeadLink;
+
 return array(
 	'router' => array(
         'routes' => array(
@@ -62,7 +66,18 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController'
         ),
     ),
-    'view_manager' => array(
+    'view_helpers' => array(
+		'factories' => array(
+			// the array key here is the name you will call the view helper by in your view scripts
+			'muneeHeadScript' => function($sm) {
+				return new MuneeHeadScript();
+			},
+			'muneeHeadLink' => function($sm) {
+				return new MuneeHeadLink();
+			}
+		)
+	),
+	'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
         'doctype'                  => 'HTML5',
@@ -74,7 +89,7 @@ return array(
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
-        'template_path_stack' => array(
+		'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
     ),
