@@ -3,10 +3,13 @@
 return array(
     // This should be an array of module namespaces used in the application.
     'modules' => array(
-        'Admin',
         'DoctrineModule',
         'DoctrineORMModule',
         'DkcwdZf2Munee',
+        'ZfcBase',
+        'ZfcUser',
+        'BjyAuthorize',
+		'Admin',
         'Application'
     ),
 	'view_manager' => array(

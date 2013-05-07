@@ -7,6 +7,8 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
+use Admin\Acl\UserRoles;
+
 return array(
 	'di' => array(
 		'instance' => array(
@@ -15,7 +17,23 @@ return array(
 	),
 	'service_manager' => array(
         'aliases' => array(),
-		'factories' => array()
+		'factories' => array(
+			'Admin\Acl\UserRoles' => function ($sm) {
+				$ur = new UserRoles(
+					$sm->
+						get('em')->
+							getRepository(
+								'Application\Model\Entity\SystemUser'
+							),
+					
+					$sm->get('zfcuser_user_service')
+				);
+				
+				return $ur->setDefaultRole(
+					$sm->get('BjyAuthorize\Config')['default_role']
+				);
+			}
+		)
     ),
 	'controllers' => array(
         'invokables' => array( 

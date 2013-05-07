@@ -11,7 +11,7 @@
 			 *
 			 * for ZfcUser, this will be your default identity provider
 			 */
-			'identity_provider' => 'BjyAuthorize\Provider\Identity\ZfcUserZendDb',
+			'identity_provider' => 'Admin\Acl\UserRoles',
 
 			/* If you only have a default role and an authenticated role, you can
 			 * use the 'AuthenticationIdentityProvider' to allow/restrict access
@@ -33,23 +33,29 @@
 				 * 'admin' inheriting from user
 				 */
 				'BjyAuthorize\Provider\Role\Config' => array(
-					'guest' => array(),
-					'user'  => array('children' => array(
-						'admin' => array(),
-					)),
+					'guest' => array(
+						'children' => array(
+							'user'  => array(
+								'children' => array(
+									'admin' => array(),
+								)
+							)
+						)
+					),
 				),
-
+				
+				//'BjyAuthorize\Provider\Role\ObjectRepositoryProvider' => array(
+				//	'role_entity_class' => 'Application\Model\Entity\Role',
+				//	'object_manager'	=> 'em'
+				//),
+				
 				// this will load roles from the user_role table in a database
 				// format: user_role(role_id(varchar), parent(varchar))
 				/*'BjyAuthorize\Provider\Role\ZendDb' => array(
 					'table'             => 'user_role',
 					'role_id_field'     => 'role_id',
 					'parent_role_field' => 'parent',
-				),
-
-				// this will load roles from the 'BjyAuthorize\Provider\Role\Doctrine'
-				// service
-				'BjyAuthorize\Provider\Role\Doctrine' => array(),*/
+				),*/
 			),
 
 			// resource providers provide a list of resources that will be tracked
@@ -90,7 +96,7 @@
 				 * You may omit the 'action' index to allow access to the entire controller
 				 */
 				'BjyAuthorize\Guard\Controller' => array(
-					array('controller' => 'index', 'action' => 'index', 'roles' => array('guest','user')),
+					array('controller' => 'index', 'action' => 'index', 'roles' => array('guest')),
 					array('controller' => 'index', 'action' => 'stuff', 'roles' => array('user')),
 					array('controller' => 'zfcuser', 'roles' => array()),
 					// Below is the default index action used by the [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication)
