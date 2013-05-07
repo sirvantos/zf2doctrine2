@@ -33,10 +33,13 @@
 				 * 'admin' inheriting from user
 				 */
 				'BjyAuthorize\Provider\Role\Config' => array(
-					'guest' => array(),
-					'user'  => array(
-						'children' => array(
-							'admin' => array(),
+					'guest' => array(
+						'children' => 
+							array('user'  => array(
+								'children' => array(
+									'admin' => array()
+								)
+							)
 						)
 					)
 				),
@@ -93,8 +96,9 @@
 				 * You may omit the 'action' index to allow access to the entire controller
 				 */
 				'BjyAuthorize\Guard\Controller' => array(
-					array('controller' => 'index', 'action' => 'index', 'roles' => array('guest')),
-					array('controller' => 'index', 'action' => 'stuff', 'roles' => array('user')),
+					array('controller' => 'Application\Controller\Index', 'action' => 'index', 'roles' => array('guest')),
+					array('controller' => 'Application\Controller\Index', 'action' => 'stuff', 'roles' => array('user')),
+					array('controller' => 'DkcwdZf2Munee\Controllers\Munee', 'action' => 'munee', 'roles' => array('guest')),
 					array('controller' => 'zfcuser', 'roles' => array()),
 					// Below is the default index action used by the [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication)
 					// array('controller' => 'Application\Controller\Index', 'roles' => array('guest', 'user')),
@@ -109,7 +113,8 @@
 					array('route' => 'zfcuser/login', 'roles' => array('guest')),
 					array('route' => 'zfcuser/register', 'roles' => array('guest')),
 					// Below is the default index action used by the [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication)
-					array('route' => 'home', 'roles' => array('guest', 'user')),
+					array('route' => 'home', 'roles' => array('guest')),
+					array('route' => 'DkcwdZf2Munee', 'roles' => array('guest'))
 				),
 			),
 		),
