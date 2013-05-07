@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ZfcUser' => $vendorDir . '/zf-commons/zfc-user/src',
+    'ZfcBase' => $vendorDir . '/zf-commons/zfc-base/src',
     'Zend\\' => $vendorDir . '/zendframework/zendframework/library',
     'ZendTest\\' => $vendorDir . '/zendframework/zendframework/tests',
     'Symfony\\Component\\Console\\' => $vendorDir . '/symfony/console',
@@ -23,4 +25,5 @@ return array(
     'DkcwdZf2Munee\\' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/src',
     'DkcwdZf2MuneeTest\\' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/test',
     'CoffeeScript' => $vendorDir . '/coffeescript/coffeescript/src',
+    'BjyAuthorize\\' => $vendorDir . '/bjyoungblood/bjy-authorize/src',
 );

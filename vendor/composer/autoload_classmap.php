@@ -13,6 +13,8 @@ return array(
     'DkcwdZf2Munee\\View\\Helpers\\MuneeCss' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/src/DkcwdZf2Munee/View/Helpers/MuneeCss.php',
     'DkcwdZf2Munee\\View\\Helpers\\MuneeImg' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/src/DkcwdZf2Munee/View/Helpers/MuneeImg.php',
     'DkcwdZf2Munee\\View\\Helpers\\MuneeJs' => $vendorDir . '/dkcwd/dkcwd-zf2-munee/src/DkcwdZf2Munee/View/Helpers/MuneeJs.php',
+    'ZfcBase\\Module' => $vendorDir . '/zf-commons/zfc-base/Module.php',
+    'ZfcUser\\Module' => $vendorDir . '/zf-commons/zfc-user/Module.php',
     'lessc' => $vendorDir . '/leafo/lessphp/lessc.inc.php',
     'lessc_formatter_classic' => $vendorDir . '/leafo/lessphp/lessc.inc.php',
     'lessc_formatter_compressed' => $vendorDir . '/leafo/lessphp/lessc.inc.php',

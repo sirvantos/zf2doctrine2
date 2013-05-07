@@ -8,7 +8,9 @@
         "php": ">=5.3.3",
         "zendframework/zendframework"			: "2.*",
         "doctrine/migrations"					: "dev-master",
+        "zf-commons/zfc-user"					: "0.1.*",
         "doctrine/doctrine-orm-module"			: "*",
-        "dkcwd/dkcwd-zf2-munee"					: "1.2.*"
+        "bjyoungblood/bjy-authorize"			: "1.2.*",
+		"dkcwd/dkcwd-zf2-munee"					: "1.2.*"
     }
 }

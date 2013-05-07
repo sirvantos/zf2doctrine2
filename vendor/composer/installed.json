@@ -980,5 +980,190 @@
             "php",
             "zf2"
         ]
+    },
+    {
+        "name": "zf-commons/zfc-base",
+        "version": "v0.1.2",
+        "version_normalized": "0.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ZF-Commons/ZfcBase.git",
+            "reference": "v0.1.2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ZF-Commons/ZfcBase/zipball/v0.1.2",
+            "reference": "v0.1.2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "zendframework/zend-db": ">=2.1,<3.0",
+            "zendframework/zend-eventmanager": ">=2.1,<3.0",
+            "zendframework/zend-loader": ">=2.1,<3.0",
+            "zendframework/zend-modulemanager": ">=2.1,<3.0",
+            "zendframework/zend-mvc": ">=2.1,<3.0",
+            "zendframework/zend-servicemanager": ">=2.1,<3.0",
+            "zendframework/zend-stdlib": ">=2.1,<3.0"
+        },
+        "time": "2013-05-02 12:33:49",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "ZfcBase": "src/"
+            },
+            "classmap": [
+                "./Module.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Kyle Spraggs",
+                "email": "theman@spiffyjr.me",
+                "homepage": "http://www.spiffyjr.me/"
+            },
+            {
+                "name": "Evan Coury",
+                "email": "me@evancoury.com",
+                "homepage": "http://blog.evan.pro/"
+            }
+        ],
+        "description": "A set of genetic (abstract) classes which are commonly used across multiple modules.",
+        "homepage": "https://github.com/ZF-Commons/ZfcBase",
+        "keywords": [
+            "zf2"
+        ]
+    },
+    {
+        "name": "zf-commons/zfc-user",
+        "version": "0.1.2",
+        "version_normalized": "0.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ZF-Commons/ZfcUser.git",
+            "reference": "0.1.2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ZF-Commons/ZfcUser/zipball/0.1.2",
+            "reference": "0.1.2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "zendframework/zend-authentication": ">=2.1,<3.0",
+            "zendframework/zend-crypt": ">=2.1,<3.0",
+            "zendframework/zend-form": ">=2.1,<3.0",
+            "zendframework/zend-inputfilter": ">=2.1,<3.0",
+            "zendframework/zend-loader": ">=2.1,<3.0",
+            "zendframework/zend-modulemanager": ">=2.1,<3.0",
+            "zendframework/zend-mvc": ">=2.1,<3.0",
+            "zendframework/zend-servicemanager": ">=2.1,<3.0",
+            "zendframework/zend-stdlib": ">=2.1,<3.0",
+            "zendframework/zend-validator": ">=2.1,<3.0",
+            "zendframework/zend-view": ">=2.1,<3.0",
+            "zf-commons/zfc-base": "0.*"
+        },
+        "suggest": {
+            "zendframework/zend-session": "To use the default authentication adapter."
+        },
+        "time": "2013-05-02 12:33:31",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "ZfcUser": "src/"
+            },
+            "classmap": [
+                "./Module.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Kyle Spraggs",
+                "email": "theman@spiffyjr.me",
+                "homepage": "http://www.spiffyjr.me/"
+            },
+            {
+                "name": "Evan Coury",
+                "email": "me@evancoury.com",
+                "homepage": "http://blog.evan.pro/"
+            }
+        ],
+        "description": "A generic user registration and authentication module for ZF2. Supports Zend\\Db and Doctrine2.",
+        "homepage": "https://github.com/ZF-Commons/ZfcUser",
+        "keywords": [
+            "zf2"
+        ]
+    },
+    {
+        "name": "bjyoungblood/bjy-authorize",
+        "version": "1.2.5",
+        "version_normalized": "1.2.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bjyoungblood/BjyAuthorize.git",
+            "reference": "1.2.5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bjyoungblood/BjyAuthorize/zipball/1.2.5",
+            "reference": "1.2.5",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "zendframework/zend-eventmanager": ">=2.1,<3.0",
+            "zendframework/zend-mvc": ">=2.1,<3.0",
+            "zendframework/zend-permissions-acl": ">=2.1,<3.0",
+            "zendframework/zend-servicemanager": ">=2.1,<3.0",
+            "zendframework/zend-view": ">=2.1,<3.0"
+        },
+        "require-dev": {
+            "doctrine/common": ">=2.3,<2.5-dev",
+            "zendframework/zend-developer-tools": "0.*",
+            "zf-commons/zfc-user": "0.*"
+        },
+        "time": "2013-05-02 12:11:30",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "BjyAuthorize\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Marco Pivetta",
+                "email": "ocramius@gmail.com",
+                "homepage": "http://ocramius.github.com/",
+                "role": "Developer"
+            },
+            {
+                "name": "Ben Youngblood",
+                "email": "bx.youngblood@gmail.com",
+                "homepage": "http://bjyoungblood.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Zend\\Acl based firewall system for ZF2 dispatch protection",
+        "homepage": "https://github.com/bjyoungblood/BjyAuthorize",
+        "keywords": [
+            "acl",
+            "zf2",
+            "zfc-user"
+        ]
     }
 ]
