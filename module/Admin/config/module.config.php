@@ -10,47 +10,21 @@
 return array(
 	'di' => array(
 		'instance' => array(
-			'alias' => array(
-				'user' => 'User\Controller\UserController'
-			),
-			'user' => array(
-				'parameters' => array(
-					'broker' => 'Zend\Mvc\Controller\PluginBroker'
-				)
-			),
-			'Admin\Acl\Acl' => array(
-				'parameters' => array(
-					'config' => include __DIR__ . '/acl.config.php'
-				)
-			),
-			'Admin\Event\Auth\Check' => array(
-				'parameters' => array(
-					'aclClass'                 => 'Admin\Acl\Acl'
-				)
-			)
+			'alias' => array(),
 		),
 	),
 	'service_manager' => array(
-        'aliases' => array(
-			'authService' => 'doctrine.authenticationservice.orm_default',
-		),
-		'factories' => array(
-            'navigation'									=> 
-				'Zend\Navigation\Service\DefaultNavigationFactory',
-            'doctrine.authenticationstorage.orm_default'	=> 
-				new Admin\Acl\AuthenticationStorageFactory('orm_default')
-        ),
+        'aliases' => array(),
+		'factories' => array()
     ),
 	'controllers' => array(
-        'invokables' => array(
-            'Admin\Controller\News'	=> 'Admin\Controller\NewsController',
+        'invokables' => array( 
             'Admin\Controller\Auth'	=> 'Admin\Controller\AuthController'
         ),
     ),
 	'controller_plugins' => array(
 		'invokables' => array(
-			'auth' => 'Admin\Controller\Plugin\Auth',
-			'news' => 'Admin\Controller\Plugin\News'
+			'auth' => 'Admin\Controller\Plugin\Auth'
 		)
 	),
 	'view_manager' => array(

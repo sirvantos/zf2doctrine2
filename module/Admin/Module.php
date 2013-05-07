@@ -18,20 +18,6 @@ class Module
 {
 	public function onBootstrap(MvcEvent $e)
 	{
-		$sm = $e->getTarget()->getServiceManager();
-		
-		$check = $sm->get('DI')->get('Admin\Event\Auth\Check');
-		
-		$e->
-			getApplication()->
-				getEventManager()->
-					attach(
-						\Zend\Mvc\MvcEvent::EVENT_ROUTE,
-						array($check, 'preDispatch'),
-						//should after invoke all matches
-						0
-					);
-		
 		$sharedEvents = $e->getApplication()->getEventManager()->getSharedManager();
         
 		$sharedEvents->attach(__NAMESPACE__, 'dispatch', function($e) {
