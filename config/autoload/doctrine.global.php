@@ -13,15 +13,6 @@
 					)
 				)
 			),
-			'authentication' => array(
-				'orm_default'	=> array(
-					'objectManager'			=> 'Doctrine\ORM\EntityManager',
-					'identityClass'			=> 'Application\Model\Entity\SystemUser',
-					'identityProperty'		=> 'email',
-					'credentialProperty'	=> 'password',
-					'credentialCallable'	=> 'Application\Model\Entity\SystemUser::hashPassword'
-				)
-			),
 			// Configuration details for the ORM.
 			// See http://docs.doctrine-project.org/en/latest/reference/configuration.html
 			'configuration' => array(

@@ -40,16 +40,23 @@
 		/** @ORM\Column(name="last_name",type="string", length=128, nullable=true) */
 		protected $lastName;
 		
-		/** @ORM\Column(name="role",type="string", length=16, nullable=false) */
-		protected $role = Acl::ROLE_GUEST;
+		/**
+		* @var int
+		*/
+		protected $state;
+		
+		/**
+		* @var \Doctrine\Common\Collections\Collection
+		* @ORM\ManyToMany(targetEntity="Application\Model\Entity\Role")
+		* @ORM\JoinTable(name="user_role_linker",
+		*      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+		*      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
+		* )
+		*/
+		protected $roles;
 		
 		/** @ORM\Column(type="datetime", nullable=false) */
 		protected $created;
-		
-		public static function hashPassword($entity, $credentialValue)
-		{
-			return crypt($credentialValue, $entity->getPassword());
-		}
 		
 		/** @ORM\PrePersist */
 		public function setCreatedTime()
@@ -158,22 +165,51 @@
 		}
 		
 		/**
-		 * @param String $role
-		 * @return \Application\Model\Entity\SystemUser
-		 */
-		public function setRole($role)
+		* Get role.
+		*
+		* @return array
+		*/
+		public function getRoles()
 		{
-			$this->role = $role;
+			return $this->roles->getValues();
+		}
+		
+		/**
+		* Add a role to the user.
+		*
+		* @param Role $role
+		*
+		* @return \Application\Model\Entity\SystemUser
+		*/
+		public function addRole($role)
+		{
+			$this->roles[] = $role;
 			
 			return $this;
 		}
-
-		/**
-		 * @return String
-		 */
-		public function getRole()
+		
+		 /**
+		* Get state.
+		*
+		* @return int
+		*/
+		public function getState()
 		{
-			return $this->role;
+			return $this->state;
+		}
+
+	   /**
+		* Set state.
+		*
+		* @param int $state
+		*
+		* @return \Application\Model\Entity\SystemUser
+		*/
+		public function setState($state)
+		{
+			$this->state = $state;
+			
+			return $this;
 		}
 		
 		/**
