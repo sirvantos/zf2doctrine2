@@ -33,15 +33,12 @@
 				 * 'admin' inheriting from user
 				 */
 				'BjyAuthorize\Provider\Role\Config' => array(
-					'guest' => array(
+					'guest' => array(),
+					'user'  => array(
 						'children' => array(
-							'user'  => array(
-								'children' => array(
-									'admin' => array(),
-								)
-							)
+							'admin' => array(),
 						)
-					),
+					)
 				),
 				
 				//'BjyAuthorize\Provider\Role\ObjectRepositoryProvider' => array(
