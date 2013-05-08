@@ -34,13 +34,13 @@
 			if (empty($struc['method']))
 				throw new \RuntimeException('No method name given');
 			
-			$cacheName = 
-				strtolower($struc['meta']->getTableName()) 
-				. '_' . strtolower($struc['method']);
+			$cacheName = strtolower($struc['meta']->getTableName());
 			
 			if (!empty($struc['args'])) {
 				$cacheName .= '_' . md5(serialize($struc['args']));
 			}
+			
+			$cacheName .= '_' . strtolower($struc['method']);
 			
 			return $query->useResultCache(true, $lifeTime, $cacheName);
 		}
