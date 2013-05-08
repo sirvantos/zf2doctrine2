@@ -37,7 +37,7 @@
 		protected $username;
 		
 		/** @ORM\Column(name="first_name", type="string", length=128, nullable=true) */
-		protected $fisrtName;
+		protected $firstName;
 		
 		/** @ORM\Column(name="last_name",type="string", length=128, nullable=true) */
 		protected $lastName;
@@ -142,18 +142,18 @@
 		/**
 		 * @return String
 		 */
-		public function getFisrtName() 
+		public function getFirstName() 
 		{
-			return $this->fisrtName;
+			return $this->firstName;
 		}
 
 		/**
-		 * @param String $fisrtName
+		 * @param String $firstName
 		 * @return \Application\Model\Entity\SystemUser
 		 */
-		public function setFisrtName($fisrtName) 
+		public function setFirstName($firstName) 
 		{
-			$this->fisrtName = $fisrtName;
+			$this->firstName = $firstName;
 			
 			return $this;
 		}
@@ -179,7 +179,7 @@
 		
 		public function getDisplayName() 
 		{
-			return $this->getFisrtName() . ' ' . $this->getLastName();
+			return $this->getFirstName() . ' ' . $this->getLastName();
 		}
 		
 		public function setDisplayName($displayName)

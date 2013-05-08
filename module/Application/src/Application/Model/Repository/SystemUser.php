@@ -65,7 +65,7 @@
 				$this->
 					_em->
 						createQueryBuilder()->
-							select('u')->
+							select(array('u', 'r'))->
 							from($this->getEntityName(), 'u')->
 							leftJoin('u.roles', 'r');
 		}
