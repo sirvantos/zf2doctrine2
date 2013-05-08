@@ -32,4 +32,23 @@
 			
 			return $query->getSingleResult();
 		}
+		
+		public function findByEmail($email)
+		{
+			$query =
+				$this->
+					_em->
+						createQueryBuilder()->
+							select('u')->
+							from('Application\Model\Entity\SystemUser', 'u')->
+							where('u.email = :email')->
+							setParameter(':email', $email)->
+							getQuery();
+			
+			$query->useResultCache(
+				true, Cache::DEFAULT_LIFE_TIME, 'systemuser_' . $email
+			);
+			
+			return $query->getSingleResult();
+		}
 	}
