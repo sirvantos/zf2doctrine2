@@ -4,6 +4,7 @@
 	use 
 		Application\Utility\Cache,
 		DoctrineModule\Authentication\Adapter\ObjectRepository,
+		Doctrine\ORM\Query\Expr,
 		Doctrine\ORM\EntityRepository;
 
 	/**
@@ -16,18 +17,21 @@
 	{
 		public function findById($id)
 		{
-			$query =
-				$this->
-					_em->
-						createQueryBuilder()->
-							select('u')->
-							from('Application\Model\Entity\SystemUser', 'u')->
-							where('u.id = :id')->
-							setParameter(':id', $id)->
-							getQuery();
+			$qb = $this->makeSelectQuery();
 			
-			$query->useResultCache(
-				true, Cache::DEFAULT_LIFE_TIME, 'systemuser_' . $id
+			$query = 
+				$qb->
+					where('u.id = :id')->
+					setParameter(':id', $id)->
+					getQuery();
+			
+			Cache::setCacheForQuery(
+				$query, 
+				array(
+					'meta' => $this->getClassMetadata(), 
+					'method' => __FUNCTION__, 
+					'args' => array($id)
+				)
 			);
 			
 			return $query->getSingleResult();
@@ -35,20 +39,34 @@
 		
 		public function findByEmail($email)
 		{
+			$qb = $this->makeSelectQuery();
+			
 			$query =
+				$qb->
+					where('u.email = :email')->
+					setParameter(':email', $email)->
+					getQuery();
+			
+			Cache::setCacheForQuery(
+				$query, 
+				array(
+					'meta'		=> $this->getClassMetadata(), 
+					'method'	=> __FUNCTION__, 
+					'args'		=> array($email)
+				)
+			);
+			
+			return $query->getSingleResult();
+		}
+		
+		private function makeSelectQuery()
+		{
+			return
 				$this->
 					_em->
 						createQueryBuilder()->
 							select('u')->
-							from('Application\Model\Entity\SystemUser', 'u')->
-							where('u.email = :email')->
-							setParameter(':email', $email)->
-							getQuery();
-			
-			$query->useResultCache(
-				true, Cache::DEFAULT_LIFE_TIME, 'systemuser_' . $email
-			);
-			
-			return $query->getSingleResult();
+							from($this->getEntityName(), 'u')->
+							leftJoin('u.roles', 'r');
 		}
 	}

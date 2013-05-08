@@ -41,7 +41,7 @@
 			$roles = array();
 			
 			foreach ($authService->getIdentity()->getRoles() as $role) {
-				$roles[] = $role->getId();
+				$roles[] = $role->getRoleId();
 			}
 			
 			return $roles;

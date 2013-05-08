@@ -4,6 +4,8 @@
 	use 
 		Application\Utility\Time as TimeUtil,
 		Admin\Acl\Acl,
+		BjyAuthorize\Provider\Role\ProviderInterface,
+		ZfcUser\Entity\UserInterface,
 		Doctrine\ORM\Mapping as ORM, 
 		Doctrine\Common\Collections\ArrayCollection;
 	
@@ -17,7 +19,7 @@
 	 *		}
 	 *)
 	 */
-	class SystemUser {
+	class SystemUser implements UserInterface, ProviderInterface {
 		/**
 		* @ORM\Id
 		* @ORM\GeneratedValue(strategy="AUTO")
@@ -67,6 +69,17 @@
 		public function getId() 
 		{
 			return $this->id;
+		}
+		
+		/**
+		 * @param Integer $id
+		 * @return \Application\Model\Entity\SystemUser
+		 */
+		public function setId($id)
+		{
+			$this->id = $id;
+			
+			return $this;
 		}
 		
 		/**
@@ -162,6 +175,16 @@
 			$this->lastName = $lastName;
 			
 			return $this;
+		}
+		
+		public function getDisplayName() 
+		{
+			return $this->getFisrtName() . ' ' . $this->getLastName();
+		}
+		
+		public function setDisplayName($displayName)
+		{
+			throw new \RuntimeException(__METHOD__ . ' is not invokeable');
 		}
 		
 		/**
