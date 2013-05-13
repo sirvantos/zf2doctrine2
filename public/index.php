@@ -7,7 +7,7 @@ use Zend\Log\Logger;
  */
 chdir(dirname(__DIR__));
 
-define(MUNEE_CACHE, realpath(__DIR__ . '/../data/cache/munee'));
+define('MUNEE_CACHE', realpath(__DIR__ . '/../data/cache/munee'));
 
 // Setup autoloading
 require 'init_autoloader.php';
