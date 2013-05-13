@@ -1,7 +1,10 @@
 <?php
 	return array(
 		'bjyauthorize' => array(
-
+			
+			// strategy service name for the strategy listener to be used when permission-related errors are detected
+			'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
+			
 			// set the 'guest' role as default (must be defined in a role provider)
 			'default_role' => 'guest',
 
