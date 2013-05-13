@@ -29,9 +29,9 @@ return array(
 					$sm->get('zfcuser_user_service')
 				);
 				
-				return $ur->setDefaultRole(
-					$sm->get('BjyAuthorize\Config')['default_role']
-				);
+				$config = $sm->get('BjyAuthorize\Config');
+				
+				return $ur->setDefaultRole($config['default_role']);
 			}
 		)
     ),
