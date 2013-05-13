@@ -10,7 +10,7 @@
         "doctrine/migrations"					: "dev-master",
         "zf-commons/zfc-user"					: "0.1.*",
         "doctrine/doctrine-orm-module"			: "*",
-        "bjyoungblood/bjy-authorize"			: "1.2.*",
-		"dkcwd/dkcwd-zf2-munee"					: "1.2.*"
+        "bjyoungblood/bjy-authorize"			: "1.*",
+		"dkcwd/dkcwd-zf2-munee"					: "dev-master"
     }
 }
