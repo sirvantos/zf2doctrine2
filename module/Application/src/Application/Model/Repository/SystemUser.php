@@ -15,6 +15,10 @@
 	 */
 	final class SystemUser extends EntityRepository
 	{
+		/**
+		 * @param Integer $id
+		 * @return Application\Model\Entity\SystemUser
+		 */
 		public function findById($id)
 		{
 			$qb = $this->makeSelectQuery();
@@ -37,6 +41,10 @@
 			return $query->getSingleResult();
 		}
 		
+		/**
+		 * @param String $email
+		 * @return Application\Model\Entity\SystemUser
+		 */
 		public function findByEmail($email)
 		{
 			$qb = $this->makeSelectQuery();
@@ -59,6 +67,9 @@
 			return $query->getSingleResult();
 		}
 		
+		/**
+		 * @return Doctrine\ORM\Query
+		 */
 		private function makeSelectQuery()
 		{
 			return
