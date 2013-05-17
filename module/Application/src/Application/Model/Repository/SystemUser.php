@@ -38,7 +38,7 @@
 				)
 			);
 			
-			return $query->getSingleResult();
+			return $query->getOneOrNullResult();
 		}
 		
 		/**
@@ -64,7 +64,7 @@
 				)
 			);
 			
-			return $query->getSingleResult();
+			return $query->getOneOrNullResult();
 		}
 		
 		/**

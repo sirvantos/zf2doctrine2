@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Russia/Moscow');
+date_default_timezone_set('Europe/Moscow');
 
 /**
  * This makes our life easier when dealing with paths. Everything is relative
