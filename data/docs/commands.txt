@@ -7,3 +7,8 @@
 ./vendor/bin/doctrine-module migrations:diff --configuration=vendor/doctrine/doctrine-orm-module/.travis/migrations-config.xml
 ./vendor/bin/doctrine-module orm:clear-cache:result --id=systemuser_1 --configuration=vendor/doctrine/doctrine-orm-module/.travis/migrations-config.xml
 ./vendor/bin/doctrine-module orm:clear-cache:metadata
+
+
+CREATE	USER 'trainingsite'@'localhost' IDENTIFIED BY 'trainingsite';
+CREATE	DATABASE trainingsite;
+GRANT	ALL PRIVILEGES ON trainingsite.* TO 'trainingsite'@'localhost';

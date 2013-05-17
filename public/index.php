@@ -1,5 +1,5 @@
 <?php
-use Zend\Log\Logger;
+date_default_timezone_set('Russia/Moscow');
 
 /**
  * This makes our life easier when dealing with paths. Everything is relative
