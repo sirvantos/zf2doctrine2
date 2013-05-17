@@ -12,6 +12,7 @@
  */
 
 	use 
+		Zend\Mail\Message,
 		Zend\Log\Logger,
 		Application\Model\Error\Service\PolicyProcessingErrors;
 
