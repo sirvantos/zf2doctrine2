@@ -37,12 +37,12 @@ return array(
     ),
 	'controllers' => array(
         'invokables' => array( 
-            'Admin\Controller\Auth'	=> 'Admin\Controller\AuthController'
+            'Admin\Controller\User'	=> 'Admin\Controller\UserController'
         ),
     ),
 	'controller_plugins' => array(
 		'invokables' => array(
-			'auth' => 'Admin\Controller\Plugin\Auth'
+			'auth' => 'Admin\Controller\Plugin\User'
 		)
 	),
 	'view_manager' => array(
@@ -77,28 +77,41 @@ return array(
                             ),
                         ),
                     ),
-					'news-edit' => array(
+					'user-list' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/news/edit/:id',
+                            'route'    => '/user/list',
                             'constraints' => array(
                                 'id'     => '[0-9]+'
                             ),
                             'defaults' => array(
-								'controller'    => 'News',
+								'controller'    => 'Admin\Controller\User',
+								'action'        => 'list'
+							),
+                        ),
+                    ),
+					'user-edit' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/user/edit/:id',
+                            'constraints' => array(
+                                'id'     => '[0-9]+'
+                            ),
+                            'defaults' => array(
+								'controller'    => 'Admin\Controller\User',
 								'action'        => 'edit'
 							),
                         ),
                     ),
-					'news-delete' => array(
+					'user-delete' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/news/delete/:id',
+                            'route'    => '/user/delete/:id',
                             'constraints' => array(
                                 'id'     => '[0-9]+'
                             ),
                             'defaults' => array(
-								'controller'    => 'News',
+								'controller'    => 'Admin\Controller\User',
 								'action'        => 'delete'
 							),
                         ),

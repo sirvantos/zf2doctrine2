@@ -130,6 +130,7 @@
 			return
 				$this->
 					createQueryBuilder('u')->
-					leftJoin('u.roles', 'r');
+						select(array('u', 'r'))->
+						leftJoin('u.roles', 'r');
 		}
 	}

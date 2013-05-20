@@ -101,6 +101,7 @@
 				'BjyAuthorize\Guard\Controller' => array(
 					array('controller' => 'Application\Controller\Index', 'action' => 'index', 'roles' => array('guest')),
 					array('controller' => 'Application\Controller\Index', 'action' => 'stuff', 'roles' => array('user')),
+					array('controller' => 'Admin\Controller\User', 'roles' => array('admin')),
 					array('controller' => 'DkcwdZf2Munee\Controllers\Munee', 'action' => 'munee', 'roles' => array('guest')),
 					array('controller' => 'zfcuser', 'roles' => array()),
 					// Below is the default index action used by the [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication)
@@ -115,6 +116,7 @@
 					array('route' => 'zfcuser/login', 'roles' => array('guest')),
 					array('route' => 'zfcuser/logout', 'roles' => array('user')),
 					array('route' => 'zfcuser/register', 'roles' => array('guest')),
+					array('route' => 'admin/user-list', 'roles' => array('admin')),
 					// Below is the default index action used by the [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication)
 					array('route' => 'home', 'roles' => array('guest')),
 					array('route' => 'DkcwdZf2Munee', 'roles' => array('guest'))

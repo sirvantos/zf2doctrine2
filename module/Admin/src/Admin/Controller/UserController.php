@@ -20,8 +20,8 @@
 	 */
 	final class UserController extends AbstractActionController
 	{
-		public function indexAction()
+		public function listAction()
 		{
-			
+			echo '11111';exit;
 		}
 	}
