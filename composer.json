@@ -5,7 +5,7 @@
     "keywords": ["framework", "zf2"],
     "homepage": "http://framework.zend.com/",
     "require": {
-        "php": ">=5.3.3",
+        "php"									: ">=5.3.3",
         "zendframework/zendframework"			: "2.*",
         "doctrine/migrations"					: "dev-master",
         "zf-commons/zfc-user"					: "0.1.*",
