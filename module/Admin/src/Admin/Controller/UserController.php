@@ -19,7 +19,7 @@
 	 * @category Admin
 	 * @package  Admin/Acl
 	 */
-	final class AuthController extends AbstractActionController
+	final class UserController extends AbstractActionController
 	{
 		public function indexAction()
 		{
