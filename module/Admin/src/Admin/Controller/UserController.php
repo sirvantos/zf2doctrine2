@@ -22,6 +22,6 @@
 	{
 		public function listAction()
 		{
-			echo '11111';exit;
+			
 		}
 	}

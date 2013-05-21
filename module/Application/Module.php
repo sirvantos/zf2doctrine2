@@ -10,6 +10,7 @@
 namespace Application;
 
 use 
+	Application\Model\Listener\NavigationAclInit,
 	Zend\Mvc\ModuleRouteListener,
 	Zend\Mvc\MvcEvent;
 
@@ -26,6 +27,7 @@ class Module
 		$moduleRouteListener->attach($eventManager);
 		
 		$e->getApplication()->getServiceManager()->get('PolicyProcessingErrors');
+		$e->getApplication()->getEventManager()->attach(new NavigationAclInit());
     }
 	
 	public function getConfig()

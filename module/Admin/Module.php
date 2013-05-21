@@ -11,20 +11,14 @@ namespace Admin;
 
 use 
 	Admin\Event\Auth\Check,
-	Zend\Mvc\ModuleRouteListener,
+	Admin\Model\Listener\AdminLayoutInit,
 	Zend\Mvc\MvcEvent;
 
 class Module
 {
 	public function onBootstrap(MvcEvent $e)
 	{
-		$sharedEvents = $e->getApplication()->getEventManager()->getSharedManager();
-        
-		$sharedEvents->attach(__NAMESPACE__, 'dispatch', function($e) {
-            // This event will only be fired when an ActionController under the MyModule namespace is dispatched.
-            $controller = $e->getTarget();
-            $controller->layout('layout/admin');
-        }, 100);
+		$e->getApplication()->getEventManager()->getSharedManager()->attachAggregate(new AdminLayoutInit());
 	}
 
 	public function getConfig()
