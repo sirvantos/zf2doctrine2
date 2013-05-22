@@ -90,6 +90,40 @@
 			return $query->getOneOrNullResult();
 		}
 		
+		/**
+		 * @return \Doctrine\ORM\Query
+		 */
+		public function makePaginationQueryByCriteria(Array $criteria)
+		{
+			$sq = $this->makeSelectQuery();
+			
+			if (!empty($criteria['firstName'])) {
+				$sq->
+					andWhere('firstName like %:firstName%')->
+					setParameter(':firstName', $criteria['firstName']);
+			}
+			
+			if (!empty($criteria['lastName'])) {
+				$sq->
+					andWhere('lastName like %:lastName%')->
+					setParameter(':lastName', $criteria['lastName']);
+			}
+			
+			if (!empty($criteria['username'])) {
+				$sq->
+					andWhere('username like %:username%')->
+					setParameter(':username', $criteria['username']);
+			}
+			
+			if (!empty($criteria['email'])) {
+				$sq->
+					andWhere('email like %:email%')->
+					setParameter(':email', $criteria['email']);
+			}
+			
+			return $sq->getQuery();
+		}
+		
 		public function dropSingle($entity)
 		{
 			Cache::dropSingle(
@@ -131,6 +165,8 @@
 				$this->
 					createQueryBuilder('u')->
 						select(array('u', 'r'))->
-						leftJoin('u.roles', 'r');
+						leftJoin('u.roles', 'r')->
+						addOrderBy('u.lastName', 'ASC')->
+						addOrderBy('u.firstName', 'ASC');
 		}
 	}

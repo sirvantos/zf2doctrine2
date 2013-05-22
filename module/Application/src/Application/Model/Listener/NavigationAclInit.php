@@ -81,7 +81,10 @@
 					$foundRole = $role;	
 				
 					foreach ($childRoles as $childRole) {
-						if ($foundRole->getId() == $childRole->getParent()) {
+						
+						$parent = $childRole->getParent();
+						
+						if ($parent && ($foundRole->getId() == $parent->getId())) {
 							$foundRole = null;
 							continue 2;
 						}

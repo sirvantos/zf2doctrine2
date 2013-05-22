@@ -43,7 +43,7 @@ return array(
     ),
 	'controller_plugins' => array(
 		'invokables' => array(
-			'auth' => 'Admin\Controller\Plugin\User'
+			'user' => 'Admin\Controller\Plugin\User'
 		)
 	),
 	'view_manager' => array(

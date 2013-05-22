@@ -28,8 +28,6 @@
 			Query $query, Array $struc, $lifeTime = self::DEFAULT_LIFE_TIME
 		)
 		{
-			$query->getResultCacheDriver();
-			
 			return $query->useResultCache(
 				true, $lifeTime, self::makeCacheKey($struc)
 			);
@@ -82,7 +80,7 @@
 				$cacheName .= '_' . strtolower($struc['method']);
 			}
 			
-			return $cacheName;
+			return sha1($cacheName);
 		}
 		
 		public static function deleteById(CacheDriver $cache, $id)

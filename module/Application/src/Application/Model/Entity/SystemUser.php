@@ -3,7 +3,6 @@
 	
 	use 
 		Application\Utility\Time as TimeUtil,
-		Admin\Acl\Acl,
 		BjyAuthorize\Provider\Role\ProviderInterface,
 		ZfcUser\Entity\UserInterface,
 		Doctrine\ORM\Mapping as ORM, 
@@ -64,6 +63,11 @@
 		public function setCreatedTime()
 		{
 			$this->created = TimeUtil::makeCurrentDate();
+		}
+		
+		public function __construct()
+		{
+			$this->roles = new ArrayCollection();
 		}
 		
 		public function getId() 
@@ -206,7 +210,7 @@
 		*/
 		public function addRole($role)
 		{
-			$this->roles[] = $role;
+			$this->roles->add($role);
 			
 			return $this;
 		}

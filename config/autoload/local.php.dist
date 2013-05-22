@@ -22,6 +22,7 @@
 			'display_exceptions'       => false,
 		),
 		'service_manager' => array(
+			'aliases'	=> array('em' => 'Doctrine\ORM\EntityManager'),
 			'factories' => array(
 				'logger' =>  function ($sm) {
 					

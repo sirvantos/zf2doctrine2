@@ -11,6 +11,7 @@
         "zf-commons/zfc-user"					: "0.1.*",
         "doctrine/doctrine-orm-module"			: "*",
         "bjyoungblood/bjy-authorize"			: "1.*",
-		"dkcwd/dkcwd-zf2-munee"					: "dev-master"
+		"dkcwd/dkcwd-zf2-munee"					: "dev-master",
+		"dlu/dlutwbootstrap"					: "dev-master"
     }
 }

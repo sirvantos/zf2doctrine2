@@ -15,7 +15,6 @@
 
 	return array(
 		'service_manager' => array(
-			'aliases'	=> array('em' => 'Doctrine\ORM\EntityManager'),
 			'factories'	=> array(
 				'zfcuser_user_mapper' => function ($sm) {
 					return new UserMapper($sm->get('em'));

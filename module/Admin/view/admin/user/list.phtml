@@ -1,8 +1,27 @@
 <?php
 	$this->headTitle('User manager');
+	
+	$form = $this->userForm;
+	$form->setAttribute('action', $this->url('admin/user-list'));
+	$form->prepare();
+
+	//$this->form()->openTag($form);
+	//$this->formHidden($form->get('id'));
+	//$this->formRow($form->get('title'));
+	//$this->formRow($form->get('artist'));
+	//$this->formSubmit($form->get('submit'));
+	//$this->form()->closeTag();
+	
 ?>
 
-<div class="center" style='width:400px'>
-	<fieldset>
+<div class="center" style='width:100%'>
+	<fieldset style="width:600px" class="center">
+		<legend>Filter Form</legend>
+		<?=$this->form()->openTag($form)?>
+		<div style="width:280px" class="left"><?=$this->formRow($form->get('email'))?></div>
+		<div style="width:280px" class="right"><?=$this->formRow($form->get('username'))?></div><div class="clear"></div>
+		<div style="width:280px" class="left"><?=$this->formRow($form->get('firstName'))?></div>
+		<div style="width:280px" class="right"><?=$this->formRow($form->get('lastName'))?></div>
+		<?=$this->form()->closeTag($form)?>
 	</fieldset>
 </div>

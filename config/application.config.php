@@ -14,7 +14,8 @@ return array(
         'ZfcUser',
         'BjyAuthorize',
 		'Admin',
-        'Application'
+		'DluTwBootstrap',
+		'Application'
     ),
 	'view_manager' => array(
 		'template_path_stack' => array(
