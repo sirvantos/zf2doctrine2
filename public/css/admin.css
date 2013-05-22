@@ -1,0 +1,18 @@
+.container-fluid > .sidebar {
+	position: relative;
+	top: 0;
+	left:auto;
+	width: 220px; /* width of sidebar */
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+.container-fluid > .content {
+	margin: 0 240px; /* width of sidebars + 10px of margin */
+}
