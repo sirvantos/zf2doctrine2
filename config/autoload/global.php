@@ -11,28 +11,12 @@
  * file.
  */
 	use 
-		Application\Model\Error\Service\PolicyProcessingErrors,
-		Admin\Acl\UserMapper,
-		Zend\Db\ResultSet\ResultSet, 
-		Zend\Db\TableGateway\TableGateway;	
+		Admin\Acl\UserMapper;	
 
 	return array(
 		'service_manager' => array(
 			'aliases'	=> array('em' => 'Doctrine\ORM\EntityManager'),
 			'factories'	=> array(
-				'PolicyProcessingErrors' => function ($sm) 
-				{
-					$em = $sm->get('Application')->getEventManager();
-
-					$ppe = new PolicyProcessingErrors($sm->get('logger'));
-					
-					$em->attach(
-						\Zend\Mvc\MvcEvent::EVENT_ROUTE,  array($ppe, 'init'), 
-						10000000
-					);
-
-					return $ppe;
-				},
 				'zfcuser_user_mapper' => function ($sm) {
 					return new UserMapper($sm->get('em'));
 				}

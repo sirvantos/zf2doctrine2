@@ -10,6 +10,7 @@
 namespace Application;
 
 use 
+	Application\Model\Listener\PolicyProcessingErrors,
 	Application\Model\Listener\NavigationAclInit,
 	Zend\Mvc\ModuleRouteListener,
 	Zend\Mvc\MvcEvent;
@@ -19,15 +20,13 @@ class Module
    public function onBootstrap(MvcEvent $e)
     {
 		$mainSm = $e->getApplication()->getServiceManager();
-	   
-		$mainSm->get('translator');
 		
 		$eventManager        = $e->getApplication()->getEventManager();
 		$moduleRouteListener = new ModuleRouteListener();
 		$moduleRouteListener->attach($eventManager);
 		
-		$e->getApplication()->getServiceManager()->get('PolicyProcessingErrors');
-		$e->getApplication()->getEventManager()->attach(new NavigationAclInit());
+		$eventManager->attach(new PolicyProcessingErrors($mainSm->get('logger')));
+		$eventManager->attach(new NavigationAclInit());
     }
 	
 	public function getConfig()
