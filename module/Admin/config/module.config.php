@@ -18,7 +18,6 @@ return array(
 	'service_manager' => array(
         'aliases' => array(),
 		'factories' => array(
-			'navigation'			=> 'Zend\Navigation\Service\DefaultNavigationFactory',
 			'Admin\Acl\UserRoles'	=> function ($sm) {
 				$ur = new UserRoles(
 					$sm->
@@ -120,18 +119,5 @@ return array(
                 ),
             ),
 		)
-	),
-	'navigation' => array(
-        // The DefaultNavigationFactory we configured in (1) uses 'default' as the sitemap key
-        'default' => array(
-            // And finally, here is where we define our page hierarchy
-           'User' => array(
-                'label'			=> 'Users',
-                'controller'	=> 'Admin\Controller\User',
-                'action'		=> 'list',
-				//controller/ because bjy-authorize store controller guards in such format
-				'resource'		=> 'controller/Admin\Controller\User'
-            )
-        ),
-    ),
+	)
 );

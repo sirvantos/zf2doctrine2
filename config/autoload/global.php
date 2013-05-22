@@ -16,9 +16,30 @@
 	return array(
 		'service_manager' => array(
 			'factories'	=> array(
-				'zfcuser_user_mapper' => function ($sm) {
+				'navigation'			=> 'Zend\Navigation\Service\DefaultNavigationFactory',
+				'admin_navigation'		=> 'Admin\Service\Factory\AdminNavigationFactory',
+				'zfcuser_user_mapper'	=> function ($sm) {
 					return new UserMapper($sm->get('em'));
 				}
 			)
-		)
+		),
+		
+		'navigation' => array(
+			// The DefaultNavigationFactory we configured in (1) uses 'default' as the sitemap key
+			'admin' => array(
+				// And finally, here is where we define our page hierarchy
+			   array(
+					'label'		=> 'Menu',
+					'class'		=> 'nav-header',
+					'uri'		=> '#'
+			   ),
+			   array(
+					'label'			=> 'Users',
+					'controller'	=> 'Admin\Controller\User',
+					'action'		=> 'list',
+					//controller/ because bjy-authorize store controller guards in such format
+					'resource'		=> 'controller/Admin\Controller\User'
+				)
+			),
+		),
 	);

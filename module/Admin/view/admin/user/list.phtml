@@ -15,13 +15,13 @@
 ?>
 
 <div class="center" style='width:100%'>
-	<fieldset style="width:600px" class="center">
-		<legend>Filter Form</legend>
 		<?=$this->form()->openTag($form)?>
-		<div style="width:280px" class="left"><?=$this->formRow($form->get('email'))?></div>
-		<div style="width:280px" class="right"><?=$this->formRow($form->get('username'))?></div><div class="clear"></div>
-		<div style="width:280px" class="left"><?=$this->formRow($form->get('firstName'))?></div>
-		<div style="width:280px" class="right"><?=$this->formRow($form->get('lastName'))?></div>
+		<fieldset>
+			<legend>Filters</legend>
+			<div style="width:280px" class="left"><?=$this->formRow($form->get('email'))?></div>
+			<div style="width:280px" class="right"><?=$this->formRow($form->get('username'))?></div><div class="clear"></div>
+			<div style="width:280px" class="left"><?=$this->formRow($form->get('firstName'))?></div>
+			<div style="width:280px" class="right"><?=$this->formRow($form->get('lastName'))?></div>
+		</fieldset>
 		<?=$this->form()->closeTag($form)?>
-	</fieldset>
 </div>
