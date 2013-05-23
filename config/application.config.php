@@ -14,7 +14,6 @@ return array(
         'ZfcUser',
         'BjyAuthorize',
 		'Admin',
-		'DluTwBootstrap',
 		'Application'
     ),
 	'view_manager' => array(
