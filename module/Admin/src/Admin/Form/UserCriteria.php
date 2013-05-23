@@ -34,7 +34,7 @@ class UserCriteria extends BaseForm
 		
 		$this->add(array(
             'name' => 'email',
-            'type' => 'Zend\Form\Element\Email',
+            'type' => 'Zend\Form\Element\Text',
             'options' => array(
                 'label' => 'Email:',
             ),
@@ -69,8 +69,20 @@ class UserCriteria extends BaseForm
 			'type' => 'Zend\Form\Element\Submit',
 			'attributes' => array(
 				'type'  => 'submit',
-				'value' => 'Submit'
+				'value' => 'Submit',
+				'class' => 'btn btn-primary'
 			),
+		));
+		
+		$this->add(array(
+			'name' => 'clear',
+			'type' => 'Zend\Form\Element\Button',
+			'attributes' => array(
+				'class' => 'btn'
+			),
+            'options' => array(
+                'label' => 'Clear',
+            )
 		));
 		
 		return $this;

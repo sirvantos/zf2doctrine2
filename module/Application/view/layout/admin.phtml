@@ -17,7 +17,7 @@
 						->prependFile($this->basePath() . '/js/libs/jquery/plugins/bootstrap.min.js')
 						->prependFile($this->basePath() . '/js/libs/jquery/min.js') ?>
 	</head>
-    <body id="body">
+    <body>
         <div class="container">
 			<!-- Header -->
 			<div class="container-fluid no-padding header">
@@ -35,13 +35,11 @@
 							<?=$this->navigation('admin_navigation')->menu()->renderMenu(null, array('ulClass' => 'nav nav-list'))?>
 						</div>
 					</div>
-					<div class="span10">
-						<p class="center-text"><?=$this->content?></p>
-					</div>
+					<div class="span10"><?=$this->content?></div>
 				</div>
 			</div>
 			<!-- Footer -->
-			<div id="footer">
+			<div id="container-fluid no-padding header">
 				<div class="container-fluid">
 					<p>&COPY;2005 - 2013 by Noussoft Ltd. All rights reserved.</p>
 				</div>

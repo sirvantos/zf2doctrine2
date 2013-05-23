@@ -99,26 +99,26 @@
 			
 			if (!empty($criteria['firstName'])) {
 				$sq->
-					andWhere('firstName like %:firstName%')->
-					setParameter(':firstName', $criteria['firstName']);
+					andWhere('u.firstName like :firstName')->
+					setParameter(':firstName', '%' . $criteria['firstName'] . '%');
 			}
 			
 			if (!empty($criteria['lastName'])) {
 				$sq->
-					andWhere('lastName like %:lastName%')->
-					setParameter(':lastName', $criteria['lastName']);
+					andWhere('u.lastName like :lastName')->
+					setParameter(':lastName', '%' . $criteria['lastName']) . '%';
 			}
 			
 			if (!empty($criteria['username'])) {
 				$sq->
-					andWhere('username like %:username%')->
-					setParameter(':username', $criteria['username']);
+					andWhere('u.username like :username')->
+					setParameter(':username', '%' . $criteria['username'] . '%');
 			}
 			
 			if (!empty($criteria['email'])) {
 				$sq->
-					andWhere('email like %:email%')->
-					setParameter(':email', $criteria['email']);
+					andWhere('u.email like :email')->
+					setParameter(':email', '%' . $criteria['email'] . '%');
 			}
 			
 			return $sq->getQuery();

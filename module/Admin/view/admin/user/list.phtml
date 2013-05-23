@@ -13,15 +13,44 @@
 	//$this->form()->closeTag();
 	
 ?>
-
-<div class="center" style='width:100%'>
-		<?=$this->form()->openTag($form)?>
-		<fieldset>
-			<legend>Filters</legend>
-			<div style="width:280px" class="left"><?=$this->formRow($form->get('email'))?></div>
-			<div style="width:280px" class="right"><?=$this->formRow($form->get('username'))?></div><div class="clear"></div>
-			<div style="width:280px" class="left"><?=$this->formRow($form->get('firstName'))?></div>
-			<div style="width:280px" class="right"><?=$this->formRow($form->get('lastName'))?></div>
-		</fieldset>
-		<?=$this->form()->closeTag($form)?>
+<div style="width:100%">
+	<?=$this->form()->openTag($form)?>
+	<fieldset>
+		<legend>Filters</legend>
+		<div class="center" style="width:500px">
+			<div class="control-group">
+				<div class="controls">
+					<div class="row">
+						<div class="span5">
+							<?=$this->formRow($form->get('email'))?>
+						</div>
+						<div class="span5">
+							<?=$this->formRow($form->get('username'))?>
+						</div>
+					</div>
+				</div>
+				<div class="controls">
+					<div class="row">
+						<div class="span5">
+							<?=$this->formRow($form->get('firstName'))?>
+						</div>
+						<div class="span5">
+							<?=$this->formRow($form->get('lastName'))?>
+						</div>
+					</div>
+				</div>
+				<div class="controls offset2">
+					<div class="row">
+						<div class="span5">
+							<?=$this->formRow($form->get('send'))?>
+						</div>
+						<div class="span5">
+							<?=$this->formButton($form->get('clear'))?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<?=$this->form()->closeTag($form)?>
 </div>

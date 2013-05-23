@@ -26,6 +26,8 @@
 			$request = $this->getRequest();
 			$form = new UserForm('userFilter');
 			
+			$form->setAttribute('method', 'get');
+			
 			$data = array();
 			
 			if ($request->isPost()) {
