@@ -17,7 +17,7 @@
 	<?=$this->form()->openTag($form)?>
 	<fieldset>
 		<legend>Filters</legend>
-		<div class="center" style="width:500px">
+		<div class="center" style="width:550px">
 			<div class="control-group">
 				<div class="controls">
 					<div class="row">
@@ -53,4 +53,46 @@
 		</div>
 	</fieldset>
 	<?=$this->form()->closeTag($form)?>
+	<fieldset>
+		<legend>Users</legend>
+		<div class="center" style="width:700px">
+			<div class="clearfix"></div>
+			<div class="offset4">
+				<?= $this->paginationControl($this->paginator, 'Sliding', 'parts/twitterPagination', array('route' => 'admin/user-list')); ?>
+			</div>
+			<div class="control-group">
+				<?php if (count($this->paginator)):?>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>username</th>
+								<th>email</th>
+								<th>first name</th>
+								<th>last name</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+					<?php foreach ($this->paginator as $item): ?>
+							<tr class="pagination-centered">
+								<td><?=$this->escapeHtml($item->getId())?></td>
+								<td><?=$this->escapeHtml($item->getUsername())?></td>
+								<td><?=$this->escapeHtml($item->getEmail())?></td>
+								<td><?=$this->escapeHtml($item->getFirstName())?></td>
+								<td><?=$this->escapeHtml($item->getLastName())?></td>
+								<td>Edit&nbsp;Delete</td>
+							</tr>
+					<?php endforeach; ?>
+						</tbody>
+					</table>
+				<?php else:?>
+					<div class="center" style="width:150px"><h4>No data found</h3></div>
+				<?php endif;?>
+			</div>
+			<div class="offset4">
+				<?= $this->paginationControl($this->paginator, 'Sliding', 'parts/twitterPagination', array('route' => 'admin/user-list')); ?>
+			</div>
+		</div>
+	</fieldset>
 </div>
