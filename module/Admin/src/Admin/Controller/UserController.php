@@ -44,6 +44,7 @@
 			
 			if ($request->isPost()) {
 				if ($userForm->setData($request->getPost())->isValid()) {
+					
 					$this->user()->addUser($userForm);
 					
 					$this->redirect()->toRoute('admin/user-list');

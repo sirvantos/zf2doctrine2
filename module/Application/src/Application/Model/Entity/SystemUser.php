@@ -95,6 +95,12 @@
 		 * @Annotation\Exclude()
 		 */
 		protected $inputFilter = null;
+		
+		/**
+		 * @var Integer 
+		 * @Annotation\Exclude()
+		 */
+		protected $roleId = null;
 
 
 		/** @ORM\PrePersist */
@@ -227,6 +233,28 @@
 		public function setDisplayName($displayName)
 		{
 			throw new \RuntimeException(__METHOD__ . ' is not invokeable');
+		}
+		
+		/**
+		* Get role.
+		*
+		* @return SystemUser
+		*/
+		public function setRoles($id)
+		{
+			$this->roleId = $id;
+			
+			return $this;
+		}
+		
+		/**
+		* Get role.
+		*
+		* @return SystemUser
+		*/
+		public function getRoleId()
+		{
+			return $this->roleId;
 		}
 		
 		/**

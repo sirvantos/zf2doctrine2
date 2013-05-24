@@ -38,7 +38,24 @@
 		
 		public function addUser(Form $form)
 		{
+			$em = 
+				$this->
+					getController()->
+						getServiceLocator()->
+							get('em');
 			
+			$systemUser = $form->getObject();
+			
+			$role = new \Application\Model\Entity\Role();
+			$role->setId($systemUser->getRoleId());
+			
+			$systemUser->addRole($role);
+			
+			$em->persist($systemUser);
+			$em->persist($role);
+			$em->flush();
+			
+			return $this;
 		}
 		
 		public function updateUser()
@@ -75,7 +92,7 @@
 			);
 			
 			$userForm->
-				setHydrator(new DoctrineHydrator($em,'Application\Model\Entity\SystemUser'))->
+				setHydrator(new \Zend\Stdlib\Hydrator\ClassMethods())->
 				bind($su);
 			
 			$list = $em->getRepository('Application\Model\Entity\Role')->findAll();

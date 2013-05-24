@@ -20,13 +20,13 @@
 		 */
 		static public function makeCurrentDate()
 		{
-			return new DateTime();
+			return new \DateTime();
 		}
 		
 		static public function removeTooOldPrograms(Array $programs)
 		{
 			$from = Application_Model_Utils_Time::convert2UTC(
-				new DateTime(date("Y-m-d H:i:s", time() - (60 * 30)))
+				new \DateTime(date("Y-m-d H:i:s", time() - (60 * 30)))
 			)->getTimestamp();
 			
 			$sliceBorder = 0;
@@ -35,7 +35,7 @@
 				$programDate = new DateTime(
 					$program['program_program_date'] . ' ' 
 					. $program['program_start_time'],
-					new DateTimeZone(Application_Model_Utils_Time::DEFAULT_TIMEZONE)
+					new \DateTimeZone(Application_Model_Utils_Time::DEFAULT_TIMEZONE)
 				);
 				
 				if ($programDate->getTimestamp() >= $from) {
@@ -50,14 +50,14 @@
 		
 		static public function getProgramTimes(Array $program)
 		{
-			$startDate = new DateTime(
+			$startDate = new \DateTime(
 				$program['program_date'] . ' ' . $program['start_time'],
-				new DateTimeZone(Application_Model_Utils_Time::DEFAULT_TIMEZONE)
+				new \DateTimeZone(Application_Model_Utils_Time::DEFAULT_TIMEZONE)
 			);
 			
 			$endDate = new DateTime(
 				$program['program_date'] . ' ' . $program['end_time'],
-				new DateTimeZone(Application_Model_Utils_Time::DEFAULT_TIMEZONE)
+				new \DateTimeZone(Application_Model_Utils_Time::DEFAULT_TIMEZONE)
 			);
 			
 			if ($startDate->getTimestamp() > $endDate->getTimestamp())
@@ -128,12 +128,12 @@
 		 * @return DateTime
 		 */
 		static public function convert2UTC(
-			$sourceDate, DateTimeZone $sourceTimezone = null
+			$sourceDate, \DateTimeZone $sourceTimezone = null
 		)
 		{
 			return
 				self::_convert2DT($sourceDate, $sourceTimezone)->
-				setTimezone(new DateTimeZone(self::DEFAULT_TIMEZONE));
+				setTimezone(new \DateTimeZone(self::DEFAULT_TIMEZONE));
 		}
 		
 		/**
@@ -227,12 +227,12 @@
 		 * @return DateTime 
 		 */
 		static private function _convert2DT(
-			/*Mixed*/ $dt, DateTimeZone $timezone = null
+			/*Mixed*/ $dt, \DateTimeZone $timezone = null
 		)
 		{
-			if (!($dt instanceof DateTime)) {
+			if (!($dt instanceof \DateTime)) {
 				
-				$dt = new DateTime(self::_correctStrDate($dt));
+				$dt = new \DateTime(self::_correctStrDate($dt));
 			}
 			
 			if ($timezone) $dt->setTimezone($timezone);
