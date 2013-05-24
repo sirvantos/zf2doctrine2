@@ -103,6 +103,16 @@ return array(
 							),
                         ),
                     ),
+					'user-add' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/user/add',
+                            'defaults' => array(
+								'controller'    => 'Admin\Controller\User',
+								'action'        => 'add'
+							),
+                        ),
+                    ),
 					'user-delete' => array(
                         'type'    => 'Segment',
                         'options' => array(

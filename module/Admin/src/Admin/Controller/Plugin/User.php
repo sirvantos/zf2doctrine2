@@ -2,6 +2,9 @@
 	namespace Admin\Controller\Plugin;
 	
 	use 
+		DoctrineORMModule\Form\Annotation\AnnotationBuilder,
+		DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator,
+		Application\Model\Entity\SystemUser,
 		DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as Adapter,
 		Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator,
 		Zend\Paginator\Paginator,
@@ -33,7 +36,7 @@
 			);
 		}
 		
-		public function addUser()
+		public function addUser(Form $form)
 		{
 			
 		}
@@ -46,5 +49,47 @@
 		public function deleteUser()
 		{
 			
+		}
+		
+		/**
+		 * @return Form
+		 */
+		public function getUserForm()
+		{
+			$em = 
+				$this->
+					getController()->
+						getServiceLocator()->
+							get('em');
+			
+			$builder = new AnnotationBuilder($em);
+			
+			$su = new SystemUser();
+			
+			$filter = new \Application\Form\Filter\User(
+				$em->getRepository('Application\Model\Entity\SystemUser')
+			);
+			
+			$userForm = $builder->createForm(
+				$su->setInputFilter($filter->remove('passwordConfirmation'))
+			);
+			
+			$userForm->
+				setHydrator(new DoctrineHydrator($em,'Application\Model\Entity\SystemUser'))->
+				bind($su);
+			
+			$list = $em->getRepository('Application\Model\Entity\Role')->findAll();
+			
+			$options					= array();
+			$options['empty_option']	= 'Please check the role';
+			$options['value_options']	= array();
+			
+			foreach ($list as $role) {
+				$options['value_options'][$role->getId()] = $role->getRoleId();
+			}
+			
+			$userForm->get('roles')->setOptions($options)->setValue('');
+			
+			return $userForm;
 		}
 	}

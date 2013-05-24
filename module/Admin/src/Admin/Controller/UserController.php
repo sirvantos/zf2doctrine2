@@ -28,19 +28,28 @@
 			
 			$form->setAttribute('method', 'get');
 			
-			$data = array();
-			
-			if ($request->isPost()) {
-				$form->setData($request->getPost());
-			} else {
-				$form->setData($request->getQuery());
-			}
-			
-			$form->isValid();
+			$form->setData($request->getQuery())->isValid();
 			
 			return array(
 				'userForm'		=> $form,
 				'paginator'		=> $this->user()->getUsersPaginator($form)
 			);
+		}
+		
+		public function addAction()
+		{
+			$request = $this->getRequest();
+			
+			$userForm = $this->user()->getUserForm();
+			
+			if ($request->isPost()) {
+				if ($userForm->setData($request->getPost())->isValid()) {
+					$this->user()->addUser($userForm);
+					
+					$this->redirect()->toRoute('admin/user-list');
+				}
+			}
+			
+			return array('userForm' => $userForm);
 		}
 	}

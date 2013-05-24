@@ -1,0 +1,36 @@
+<?php
+	$this->headTitle('Add new user');
+	
+	$form = $this->userForm;
+	
+	$form->
+		add(array(
+			'name' => 'send',
+			'type' => 'Zend\Form\Element\Submit',
+			'attributes' => array(
+				'type'  => 'submit',
+				'value' => 'Submit',
+				'class' => 'btn btn-primary'
+			),
+		))->
+		add(array(
+			'name' => 'clear',
+			'type' => 'Zend\Form\Element\Button',
+			'attributes' => array(
+				'class' => 'btn'
+			),
+            'options' => array(
+                'label' => 'Clear',
+            )
+		))->
+		setAttribute('action', $this->url('admin/user-add'))->
+		prepare();
+?>
+<div style="width:100%">
+	<div style="width:500px" class="center">
+		<fieldset>
+			<legend>New user</legend>
+			<?=$this->formTwb($form)?>
+		</fieldset>
+	</div>
+</div>

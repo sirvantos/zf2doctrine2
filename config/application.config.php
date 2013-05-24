@@ -13,6 +13,7 @@ return array(
         'ZfcBase',
         'ZfcUser',
         'BjyAuthorize',
+        'DluTwBootstrap',
 		'Admin',
 		'Application'
     ),

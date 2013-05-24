@@ -6,7 +6,10 @@
 		BjyAuthorize\Provider\Role\ProviderInterface,
 		ZfcUser\Entity\UserInterface,
 		Doctrine\ORM\Mapping as ORM, 
-		Doctrine\Common\Collections\ArrayCollection;
+		Doctrine\Common\Collections\ArrayCollection,
+		Zend\InputFilter\InputFilterAwareInterface,
+		Zend\Form\Annotation,
+		Zend\InputFilter\InputFilterInterface;
 	
 	/** 
 	 * @ORM\Entity(repositoryClass="Application\Model\Repository\SystemUser") 
@@ -18,31 +21,54 @@
 	 *		}
 	 *)
 	 */
-	class SystemUser implements UserInterface, ProviderInterface {
+	class SystemUser implements UserInterface, ProviderInterface, InputFilterAwareInterface 
+	{
 		/**
 		* @ORM\Id
 		* @ORM\GeneratedValue(strategy="AUTO")
 		* @ORM\Column(type="integer")
+		* @Annotation\Attributes({"type":"hidden"})
 		*/
 		protected $id;
 
-		/** @ORM\Column(type="string", length=128, nullable=false, unique=true) */
+		/** 
+		 * @ORM\Column(type="string", length=128, nullable=false, unique=true) 
+		 * @Annotation\Type("Zend\Form\Element\Email")
+		 * @Annotation\Options({"label":"Email:"})
+		 */
 		protected $email;
 		
-		/** @ORM\Column(type="string", length=128, nullable=false) */
+		/** 
+		 * @ORM\Column(type="string", length=128, nullable=false) 
+		 * @Annotation\Type("Zend\Form\Element\Password")
+		 * @Annotation\Options({"label":"password:"})
+		 */
 		protected $password;
 		
-		/** @ORM\Column(type="string", length=128, nullable=false, unique=true) */
+		/** 
+		 * @ORM\Column(type="string", length=128, nullable=false, unique=true) 
+		 * @Annotation\Type("Zend\Form\Element\Text")
+		 * @Annotation\Options({"label":"Username:"})
+		 */
 		protected $username;
 		
-		/** @ORM\Column(name="first_name", type="string", length=128, nullable=true) */
+		/** 
+		 * @ORM\Column(name="first_name", type="string", length=128, nullable=true) 
+		 * @Annotation\Type("Zend\Form\Element\Text") 
+		 * @Annotation\Options({"label":"Firstname:"})
+		 */
 		protected $firstName;
 		
-		/** @ORM\Column(name="last_name",type="string", length=128, nullable=true) */
+		/** 
+		 * @ORM\Column(name="last_name",type="string", length=128, nullable=true) 
+		 * @Annotation\Type("Zend\Form\Element\Text")
+		 * @Annotation\Options({"label":"Lastname:"})
+		 */
 		protected $lastName;
 		
 		/**
 		* @var int
+		* @Annotation\Exclude() 
 		*/
 		protected $state;
 		
@@ -53,12 +79,24 @@
 		*      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
 		*      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
 		* )
+		* @Annotation\Type("Zend\Form\Element\Select")
+		* @Annotation\Options({"label":"Role:"})
 		*/
 		protected $roles;
 		
-		/** @ORM\Column(type="datetime", nullable=false) */
+		/** 
+		 * @ORM\Column(type="datetime", nullable=false) 
+		 * @Annotation\Exclude()
+		 */
 		protected $created;
 		
+		/**
+		 * @var InputFilterInterface 
+		 * @Annotation\Exclude()
+		 */
+		protected $inputFilter = null;
+
+
 		/** @ORM\PrePersist */
 		public function setCreatedTime()
 		{
@@ -245,5 +283,28 @@
 		public function getCreated() 
 		{
 			return new \DateTime ($this->created);
+		}
+		
+		/**
+		* Set input filter
+		*
+		* @param  InputFilterInterface $inputFilter
+		* @return InputFilterAwareInterface
+		*/
+		public function setInputFilter(InputFilterInterface $inputFilter)
+		{
+			$this->inputFilter = $inputFilter;
+			
+			return $this;
+		}
+
+	   /**
+		* Retrieve input filter
+		*
+		* @return InputFilterInterface
+		*/
+		public function getInputFilter()
+		{
+			return $this->inputFilter;
 		}
 	}
