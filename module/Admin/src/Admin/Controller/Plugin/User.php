@@ -49,10 +49,9 @@
 			$role = new \Application\Model\Entity\Role();
 			$role->setId($systemUser->getRoleId());
 			
-			$systemUser->addRole($role);
+			$systemUser->addRole($em->merge($role));
 			
 			$em->persist($systemUser);
-			$em->persist($role);
 			$em->flush();
 			
 			return $this;
@@ -95,17 +94,18 @@
 				setHydrator(new \Zend\Stdlib\Hydrator\ClassMethods())->
 				bind($su);
 			
-			$list = $em->getRepository('Application\Model\Entity\Role')->findAll();
+			$list = $em->getRepository('Application\Model\Entity\Role')->getList();
 			
 			$options					= array();
-			$options['empty_option']	= 'Please check the role';
-			$options['value_options']	= array();
 			
 			foreach ($list as $role) {
-				$options['value_options'][$role->getId()] = $role->getRoleId();
+				$options[$role->getId()] = $role->getRoleId();
 			}
 			
-			$userForm->get('roles')->setOptions($options)->setValue('');
+			$userForm->get('roles')->
+				setValueOptions($options)->
+				setEmptyOption('Please check the role')->
+				setValue('');
 			
 			return $userForm;
 		}
