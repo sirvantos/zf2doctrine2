@@ -7,6 +7,7 @@
 		ZfcUser\Entity\UserInterface,
 		Doctrine\ORM\Mapping as ORM, 
 		Doctrine\Common\Collections\ArrayCollection,
+		Zend\Crypt\Password\Bcrypt,
 		Zend\InputFilter\InputFilterAwareInterface,
 		Zend\Form\Annotation,
 		Zend\InputFilter\InputFilterInterface;
@@ -23,6 +24,8 @@
 	 */
 	class SystemUser implements UserInterface, ProviderInterface, InputFilterAwareInterface 
 	{
+		const PASSWORD_COST = 14;
+		
 		/**
 		* @ORM\Id
 		* @ORM\GeneratedValue(strategy="AUTO")
@@ -103,10 +106,29 @@
 		protected $roleId = null;
 
 
-		/** @ORM\PrePersist */
+		/** @ORM\PrePersist 
+		 * @return SystemUser
+		 */
 		public function setCreatedTime()
 		{
 			$this->created = TimeUtil::makeCurrentDate();
+			
+			return $this;
+		}
+		
+		/** @ORM\PrePersist 
+		 * @return SystemUser
+		 */
+		public function setHashedPassword()
+		{
+			$bcrypt = new Bcrypt();
+			
+			$this->password = 
+				$bcrypt->
+					setCost(self::PASSWORD_COST)->
+					create($this->password);
+			
+			return $this;
 		}
 		
 		public function __construct()

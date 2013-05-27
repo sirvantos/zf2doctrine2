@@ -1,6 +1,6 @@
 <?php
 // application.config.php
-$configCacheEnabled = (
+$configCacheEnabled = $isProduction = (
 	getenv('APPLICATION_ENVIRONMENT') == 'production'
 );
 

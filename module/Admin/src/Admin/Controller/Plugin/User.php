@@ -46,8 +46,9 @@
 			
 			$systemUser = $form->getObject();
 			
-			$role = new \Application\Model\Entity\Role();
-			$role->setId($systemUser->getRoleId());
+			$role = $em->getReference(
+				'Application\Model\Entity\Role', $systemUser->getRoleId()
+			);
 			
 			$systemUser->addRole($em->merge($role));
 			
