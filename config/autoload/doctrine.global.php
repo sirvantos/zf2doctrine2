@@ -1,4 +1,8 @@
 <?php
+	$isProduction = (
+		getenv('APPLICATION_ENVIRONMENT') == 'production'
+	);
+	
 	return array(
 		'doctrine' => array(
 			'driver' => array(

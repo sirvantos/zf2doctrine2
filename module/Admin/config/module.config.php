@@ -80,9 +80,9 @@ return array(
 					'user-list' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/user/list',
+                            'route'    => '/user/list[/:page]',
                             'constraints' => array(
-                                'id'     => '[0-9]+'
+                                'page'     => '[0-9]+'
                             ),
                             'defaults' => array(
 								'controller'    => 'Admin\Controller\User',

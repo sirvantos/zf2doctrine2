@@ -30,9 +30,15 @@
 			
 			$form->setData($request->getQuery())->isValid();
 			
+			$paginator = $this->user()->getUsersPaginator($form);
+			
+			$paginator->
+				setItemCountPerPage(2)->
+				setCurrentPageNumber($this->params()->fromRoute('page', 1));
+			
 			return array(
 				'userForm'		=> $form,
-				'paginator'		=> $this->user()->getUsersPaginator($form)
+				'paginator'		=> $paginator
 			);
 		}
 		

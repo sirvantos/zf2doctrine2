@@ -5,13 +5,29 @@
 	$form->setAttribute('action', $this->url('admin/user-list'));
 	$form->prepare();
 
-	//$this->form()->openTag($form);
-	//$this->formHidden($form->get('id'));
-	//$this->formRow($form->get('title'));
-	//$this->formRow($form->get('artist'));
-	//$this->formSubmit($form->get('submit'));
-	//$this->form()->closeTag();
-	
+	$pgControl  = $this->paginationControl($paginator,
+		'sliding',
+		'dlutwbootstrap/paginator/standard',
+		array(
+			'routeName'              => 'admin/user-list',
+			'routeParamName'         => 'page',
+			'align'                  => 'right',
+			'icons' => array(
+				'icon-fast-backward',
+				'icon-chevron-left',
+				'icon-chevron-right',
+				'icon-fast-forward',
+			),
+			'statistics' => array(
+				'inline'            => false,
+				'totalCount'        => true,
+				'pageNumOfTotal'    => true,
+				'totalPages'        => false,
+				'pageSize'          => false,
+				'pageNum'           => false,
+			)
+		)
+	);
 ?>
 <div style="width:100%">
 	<?=$this->form()->openTag($form)?>
@@ -60,7 +76,7 @@
 				<div class="offset10"><a href="<?=$this->url('admin/user-add')?>">Add</a></div>
 			</div>
 			<div class="offset4">
-				<?= $this->paginationControl($this->paginator, 'Sliding', 'parts/twitterPagination', array('route' => 'admin/user-list')); ?>
+				<?= $pgControl ?>
 			</div>
 			<div class="control-group">
 				<?php if (count($this->paginator)):?>
@@ -93,7 +109,7 @@
 				<?php endif;?>
 			</div>
 			<div class="offset4">
-				<?= $this->paginationControl($this->paginator, 'Sliding', 'parts/twitterPagination', array('route' => 'admin/user-list')); ?>
+				<?= $pgControl ?>
 			</div>
 		</div>
 	</fieldset>
