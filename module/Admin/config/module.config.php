@@ -47,7 +47,12 @@ return array(
 	),
 	'view_manager' => array(
 		'template_path_stack' => array(
-			'admin' => __DIR__ . '/../view',
+			'admin' => __DIR__ . '/../view'
+		)
+	),
+	'view_helpers' => array(
+		'invokables' => array( 
+			'defaultPagination' => 'Admin\View\Helper\DefaultPagination'
 		)
 	),
 	// The following section is new and should be added to your file

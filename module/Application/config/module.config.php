@@ -7,10 +7,6 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-use
-	Application\View\Helper\MuneeHeadScript,
-	Application\View\Helper\MuneeHeadLink;
-
 return array(
 	'router' => array(
         'routes' => array(
@@ -67,14 +63,9 @@ return array(
         ),
     ),
     'view_helpers' => array(
-		'factories' => array(
-			// the array key here is the name you will call the view helper by in your view scripts
-			'muneeHeadScript' => function($sm) {
-				return new MuneeHeadScript();
-			},
-			'muneeHeadLink' => function($sm) {
-				return new MuneeHeadLink();
-			}
+		'invokables' => array(
+			'muneeHeadScript'	=> 'Application\View\Helper\MuneeHeadScript',
+			'muneeHeadLink'		=> 'Application\View\Helper\MuneeHeadLink'
 		)
 	),
 	'view_manager' => array(

@@ -5,28 +5,8 @@
 	$form->setAttribute('action', $this->url('admin/user-list'));
 	$form->prepare();
 
-	$pgControl  = $this->paginationControl($paginator,
-		'sliding',
-		'dlutwbootstrap/paginator/standard',
-		array(
-			'routeName'              => 'admin/user-list',
-			'routeParamName'         => 'page',
-			'align'                  => 'right',
-			'icons' => array(
-				'icon-fast-backward',
-				'icon-chevron-left',
-				'icon-chevron-right',
-				'icon-fast-forward',
-			),
-			'statistics' => array(
-				'inline'            => false,
-				'totalCount'        => true,
-				'pageNumOfTotal'    => true,
-				'totalPages'        => false,
-				'pageSize'          => false,
-				'pageNum'           => false,
-			)
-		)
+	$pgControl  = $this->defaultPagination(
+		$paginator, null, null, array('routeName' => 'admin/user-list')
 	);
 ?>
 <div style="width:100%">
