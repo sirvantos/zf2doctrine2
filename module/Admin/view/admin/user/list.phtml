@@ -79,7 +79,7 @@
 								<td><?=$this->escapeHtml($item->getEmail())?></td>
 								<td><?=$this->escapeHtml($item->getFirstName())?></td>
 								<td><?=$this->escapeHtml($item->getLastName())?></td>
-								<td>Edit&nbsp;Delete</td>
+								<td><a href="<?=$this->url('admin/user-edit', array('id' => $item->getId()))?>">Edit</a>&nbsp;Delete</td>
 							</tr>
 					<?php endforeach; ?>
 						</tbody>

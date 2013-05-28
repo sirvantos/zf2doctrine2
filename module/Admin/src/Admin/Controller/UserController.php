@@ -46,7 +46,27 @@
 		{
 			$request = $this->getRequest();
 			
-			$userForm = $this->user()->getUserForm();
+			$this->getEventManager()->getSharedManager()->attach(
+				'Application\Controller\Plugin\FormBuilder', 
+				'postCreateForm', 
+				array($this, 'changeForm')
+			);
+			
+			$su = new \Application\Model\Entity\SystemUser();
+			
+			$filter = new \Application\Form\Filter\User(
+				$this->getServiceLocator()->get('em')->getRepository(
+					'Application\Model\Entity\SystemUser'
+				)
+			);
+			
+			$filter->remove('id')->remove('passwordConfirmation');
+			
+			$userForm = $this->formBuilder()->build(
+				$su->setInputFilter($filter)
+			);
+			
+			$userForm->remove('id');
 			
 			if ($request->isPost()) {
 				if ($userForm->setData($request->getPost())->isValid()) {
@@ -58,5 +78,52 @@
 			}
 			
 			return array('userForm' => $userForm);
+		}
+		
+		public function editAction()
+		{
+			$request = $this->getRequest();
+			
+			$userForm = null;
+			
+			$su = new \Application\Model\Entity\SystemUser();
+			
+			if ($request->isPost()) {
+				$userForm = $this->formBuilder()->build($su);
+				
+				if ($userForm->setData($request->getPost())->isValid()) {
+					$this->user()->updateUser($userForm);
+					
+					$this->redirect()->toRoute('admin/user-list');
+				}
+			} else {
+				$userForm = $this->formBuilder()->build(
+					$su, $this->params()->fromRoute('id1')
+				);
+			}
+			
+			return array('userForm' => $userForm);
+		}
+		
+		public function changeForm($e) 
+		{
+			$form = $e->getParam('form');
+			
+			$em = $this->getServiceLocator()->get('em');
+			
+			$list = $em->getRepository('Application\Model\Entity\Role')->getList();
+			
+			$options = array();
+			
+			foreach ($list as $role) {
+				$options[$role->getId()] = $role->getRoleId();
+			}
+			
+			$form->get('roles')->
+				setValueOptions($options)->
+				setEmptyOption('Please check the role')->
+				setValue('');
+			
+			return $form;
 		}
 	}

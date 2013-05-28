@@ -28,17 +28,16 @@
 			// The DefaultNavigationFactory we configured in (1) uses 'default' as the sitemap key
 			'admin' => array(
 				// And finally, here is where we define our page hierarchy
-			   array(
-					'label'		=> 'Menu',
-					'class'		=> 'nav-header',
-					'uri'		=> '#'
-			   ),
-			   array(
-					'label'			=> 'Users',
-					'controller'	=> 'Admin\Controller\User',
-					'action'		=> 'list',
-					//controller/ because bjy-authorize store controller guards in such format
-					'resource'		=> 'controller/Admin\Controller\User'
+				array(
+					 'label'		=> 'Menu',
+					 'class'		=> 'nav-header',
+					 'uri'			=> '#'
+				),
+				array(
+					 'label'			=> 'Users',
+					 'route'			=> 'admin/user-list',
+					 //route/ because bjy-authorize store route guards in such format
+					 'resource'			=> 'route/admin/user-list'
 				)
 			),
 		),

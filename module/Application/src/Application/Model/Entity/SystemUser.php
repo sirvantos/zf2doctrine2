@@ -21,6 +21,7 @@
 	 *			@ORM\Index(name="system_user_email_password_idx", columns={"email", "password"})
 	 *		}
 	 *)
+	 * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ClassMethods")
 	 */
 	class SystemUser implements UserInterface, ProviderInterface, InputFilterAwareInterface 
 	{
@@ -28,8 +29,9 @@
 		
 		/**
 		* @ORM\Id
-		* @ORM\GeneratedValue(strategy="AUTO")
+		* @ORM\GeneratedValue(strategy="IDENTITY")
 		* @ORM\Column(type="integer")
+		* @Annotation\Type("Zend\Form\Element\Hidden")
 		* @Annotation\Attributes({"type":"hidden"})
 		*/
 		protected $id;
@@ -71,7 +73,7 @@
 		
 		/**
 		* @var int
-		* @Annotation\Exclude() 
+		* @Annotation\Exclude()
 		*/
 		protected $state;
 		
@@ -94,14 +96,14 @@
 		protected $created;
 		
 		/**
-		 * @var InputFilterInterface 
-		 * @Annotation\Exclude()
+		 * @var InputFilterInterface
+		 * @Annotation\Exclude()  
 		 */
 		protected $inputFilter = null;
 		
 		/**
-		 * @var Integer 
-		 * @Annotation\Exclude()
+		 * @var Integer
+		 * @Annotation\Exclude()  
 		 */
 		protected $roleId = null;
 
@@ -332,7 +334,7 @@
 		 */
 		public function getCreated() 
 		{
-			return new \DateTime ($this->created);
+			return $this->created;
 		}
 		
 		/**

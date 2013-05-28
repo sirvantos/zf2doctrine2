@@ -7,6 +7,10 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
+use 
+	Application\Controller\Plugin\FormBuilder,
+	Zend\EventManager\EventManager;
+
 return array(
 	'router' => array(
         'routes' => array(
@@ -62,7 +66,17 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController'
         ),
     ),
-    'view_helpers' => array(
+    'controller_plugins' => array(
+		'factories' => array(
+			'formBuilder'	=> function ($sm) {
+				$fm = new FormBuilder();
+				$fm->setEventManager(new EventManager());
+				
+				return $fm;
+			}
+		)
+	),
+	'view_helpers' => array(
 		'invokables' => array(
 			'muneeHeadScript'	=> 'Application\View\Helper\MuneeHeadScript',
 			'muneeHeadLink'		=> 'Application\View\Helper\MuneeHeadLink'

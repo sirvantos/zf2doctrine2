@@ -58,7 +58,7 @@
 			return $this;
 		}
 		
-		public function updateUser()
+		public function updateUser(Form $form)
 		{
 			
 		}
@@ -66,48 +66,5 @@
 		public function deleteUser()
 		{
 			
-		}
-		
-		/**
-		 * @return Form
-		 */
-		public function getUserForm()
-		{
-			$em = 
-				$this->
-					getController()->
-						getServiceLocator()->
-							get('em');
-			
-			$builder = new AnnotationBuilder($em);
-			
-			$su = new SystemUser();
-			
-			$filter = new \Application\Form\Filter\User(
-				$em->getRepository('Application\Model\Entity\SystemUser')
-			);
-			
-			$userForm = $builder->createForm(
-				$su->setInputFilter($filter->remove('passwordConfirmation'))
-			);
-			
-			$userForm->
-				setHydrator(new \Zend\Stdlib\Hydrator\ClassMethods())->
-				bind($su);
-			
-			$list = $em->getRepository('Application\Model\Entity\Role')->getList();
-			
-			$options					= array();
-			
-			foreach ($list as $role) {
-				$options[$role->getId()] = $role->getRoleId();
-			}
-			
-			$userForm->get('roles')->
-				setValueOptions($options)->
-				setEmptyOption('Please check the role')->
-				setValue('');
-			
-			return $userForm;
 		}
 	}

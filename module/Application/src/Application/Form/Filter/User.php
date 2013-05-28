@@ -9,6 +9,7 @@ namespace Application\Form\Filter;
 
 use 
 	Doctrine\ORM\EntityRepository,
+	DoctrineModule\Validator\ObjectExists,
 	DoctrineModule\Validator\NoObjectExists,
 	Zend\InputFilter\InputFilter, 
 	Zend\Validator\Hostname;
@@ -25,7 +26,27 @@ class User extends InputFilter
 	public function __construct(EntityRepository $repository) 
 	{
 		$this->
-			add(array('name' => 'email',
+			add(array('name' => 'id',
+				'required' => true,
+				'validators' => array(
+					array('name' => 'Digits'),
+					array(
+						'name' => 'DoctrineModule\Validator\ObjectExists',
+						'options' => array(
+							'object_repository' => $repository,
+							'messages'			=> array(
+								ObjectExists::ERROR_NO_OBJECT_FOUND => 
+									'Wrong id'
+							),
+							'fields'			=> 'id'
+						),
+					),
+				),
+				'filters' => array(
+					array('name' => 'StringTrim'),
+					array('name' => 'StripTags')
+				)
+			))->add(array('name' => 'email',
 				'required' => true,
 				'validators' => array(
 					array(
