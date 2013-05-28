@@ -84,6 +84,12 @@
 		{
 			$request = $this->getRequest();
 			
+			$this->getEventManager()->getSharedManager()->attach(
+				'Application\Controller\Plugin\FormBuilder', 
+				'postCreateForm', 
+				array($this, 'changeForm')
+			);
+			
 			$userForm = null;
 			
 			$su = new \Application\Model\Entity\SystemUser();
@@ -98,7 +104,7 @@
 				}
 			} else {
 				$userForm = $this->formBuilder()->build(
-					$su, $this->params()->fromRoute('id1')
+					$su, $this->params()->fromRoute('id')
 				);
 			}
 			
@@ -119,10 +125,18 @@
 				$options[$role->getId()] = $role->getRoleId();
 			}
 			
-			$form->get('roles')->
-				setValueOptions($options)->
-				setEmptyOption('Please check the role')->
-				setValue('');
+			$roles =
+				$form->get('roles')->
+					setValueOptions($options)->
+					setEmptyOption('Please check the role');
+			
+			$roleValue = $roles->getValue();
+			
+			if (is_array($roleValue) && !$roleValue) {
+				$roles->setValue('');
+			} elseif (is_array($roleValue)) {
+				$roles->setValue($roleValue[0]->getId());
+			}
 			
 			return $form;
 		}

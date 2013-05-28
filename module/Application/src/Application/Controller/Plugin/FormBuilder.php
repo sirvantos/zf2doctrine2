@@ -51,6 +51,8 @@
 			
 			$form = $builder->createForm($entity);
 			
+			$form->getHydrator()->setUnderscoreSeparatedKeys(false);
+			
 			$form->bind($entity);
 			
 			$result = $this->eventManager->trigger(
